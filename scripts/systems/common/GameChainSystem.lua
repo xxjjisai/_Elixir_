@@ -32,11 +32,17 @@ function GameChainSystem:ExecuteChain(bExecute,onComplete)
     end 
     self.iChain = self.tbChainList[self.nCurIndex];
     self.iChain:Execute(function ()
-        self.iChain:Complete(function()
+        if self.iChain.Complete then 
+            self.iChain:Complete(function()
+                if bExecute then 
+                    self:ExecuteChain(bExecute,onComplete)
+                end 
+            end);
+        else 
             if bExecute then 
                 self:ExecuteChain(bExecute,onComplete)
             end 
-        end);
+        end
     end);
 end
 
