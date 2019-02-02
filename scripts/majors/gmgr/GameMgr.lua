@@ -117,6 +117,11 @@ function GameMgr:KeyBoardDown(key, scancode, isrepeat)
     if Option.sGameState == "PLAY" then 
         SceneMgr:KeyBoardDown(key, scancode, isrepeat) 
     end
+
+    if key == "1" then 
+        SceneMgr:SetAppointScene(1)
+    end
+
 end
 
 function GameMgr:KeyBoardUp(key, scancode)

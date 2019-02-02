@@ -84,8 +84,8 @@ function Include:GlobalSystem()
 
     local strMysystemDir = "scripts/systems/mysystem/";
     -- self:RequireHandler(strMysystemDir,"PlayMechanism1");
-    self:RequireHandler(strMysystemDir,"PlayMechanism2");
-    self:RequireHandler(strMysystemDir,"MouseMoveSystem");
+    -- self:RequireHandler(strMysystemDir,"PlayMechanism2");
+    -- self:RequireHandler(strMysystemDir,"MouseMoveSystem");
 
 end
 
