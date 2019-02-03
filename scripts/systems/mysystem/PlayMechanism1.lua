@@ -22,8 +22,9 @@ function PlayMechanism1:Process_1()
     end);
     self:ExecuteChain(true,function ()
         self:Trace(1,"Chain System complete!")
-        self:Next();
-        self:Process_2();
+        self:NextProcess(function()
+            self:Process_2();
+        end);
     end);
 end
 
@@ -96,12 +97,12 @@ end
 
 function PlayMechanism1:Process_3() 
     Camera.scale = 1
-    self:CreateChain("ReSetCameraScale",1,function (pfn) 
+    self:CreateChain("ReSetCameraScale",2,function (pfn) 
         local iScene = self:GetCurScene();
         local iAnimateSys = iScene:GetSystemByName("AnimationSystem");
         local iPlayer = iScene:GetPlayer();
         local w = iPlayer:GetiCompo("Size").w;
-        local h = iPlayer:GetiCompo("Size").h; 
+        local h = iPlayer:GetiCompo("Size").h;
         Tween(4,Camera,{ scale = 2 },'linear',function ()
             if pfn then pfn() end
         end)

@@ -8,10 +8,11 @@ function GameChainSystem:Start()
     self:StartHandler();
 end
 
-function GameChainSystem:Next()
+function GameChainSystem:NextProcess(pfn)
     self.tbChainList = {};
     self.iChain = nil;
     self.nCurIndex = 0;
+    if pfn then pfn() end;
 end
 
 function GameChainSystem:StartHandler()
