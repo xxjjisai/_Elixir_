@@ -1,7 +1,7 @@
 _G.AnimationSystem = System:DeriveClass("AnimationSystem");
 
 AnimationSystem:SetRegisterCompo{
-   "Animate","Position","Color","Size"
+   "Animate","Position","Color","Size","Rotate"
 }
 
 function AnimationSystem:Start()
@@ -120,11 +120,12 @@ function AnimationSystem:Render()
             local nQuadH = iActor:GetiCompo("Animate").nQuadH;
             local w = iActor:GetiCompo("Size").w;
             local h = iActor:GetiCompo("Size").h;
+            local r = iActor:GetiCompo("Rotate").r;
             local nImageX = x - (nQuadW * 0.5 - w * 0.5)
             local nImageY = y - (nQuadH - h);
             local color = iActor:GetiCompo("Color"); 
             love.graphics.setColor(color.r,color.g,color.b,color.a);
-            love.graphics.draw(iImage, iCurQuad, nImageX, nImageY)
+            love.graphics.draw(iImage, iCurQuad, nImageX, nImageY,r)
             if Option.bDebug then 
                -- 贴图轮廓
                love.graphics.setColor(100,100,250,100);

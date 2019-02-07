@@ -1,7 +1,7 @@
 _G.SpriteRenderSystem = System:DeriveClass("SpriteRenderSystem");
 
 SpriteRenderSystem:SetRegisterCompo{
-    "Sprite","Position","Size","Color"
+    "Sprite","Position","Size","Color","Rotate"
 }
 
 function SpriteRenderSystem:Render()
@@ -14,8 +14,8 @@ function SpriteRenderSystem:Render()
              local y = iActor:GetiCompo("Position").y;
              local w = iActor:GetiCompo("Size").w;
              local h = iActor:GetiCompo("Size").h;
+             local r = iActor:GetiCompo("Rotate").r;
              local sImg = iActor:GetiCompo("Sprite").sImg;
-             local r = iActor:GetiCompo("Sprite").r;
              local sx = iActor:GetiCompo("Sprite").sx;
              local sy = iActor:GetiCompo("Sprite").sy;
              local ox = iActor:GetiCompo("Sprite").ox;

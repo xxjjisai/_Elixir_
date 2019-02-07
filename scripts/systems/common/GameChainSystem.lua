@@ -47,7 +47,8 @@ function GameChainSystem:ExecuteChain(bExecute,onComplete)
     end);
 end
 
-function GameChainSystem:CreateChain(sClassName,nExecuteTime,onExecute,onComplete)
+function GameChainSystem:CreateChain(nExecuteTime,onExecute,onComplete)
+    local sClassName = "Chain"..Origin:SetUniqueID();
     local iChain = Chain:DeriveClass(sClassName, nExecuteTime, onExecute, onComplete);
     table.insert(self.tbChainList,iChain)
 end
