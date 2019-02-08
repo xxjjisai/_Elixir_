@@ -1,7 +1,7 @@
 _G.LayerSortSystem = System:DeriveClass("LayerSortSystem");
 
 LayerSortSystem:SetRegisterCompo{
-   "RenderLayer","Position","Size"
+   "RenderLayer","Transform"
 }
 
 function LayerSortSystem:Update(dt)
@@ -10,7 +10,7 @@ function LayerSortSystem:Update(dt)
         if nLayer == RenderLayerType.nPlayer then 
             table.sort(tbLayer, function(a,b)
                 if a ~= nil and b ~= nil then 
-                    return a:GetiCompo("Position").y + a:GetiCompo("Size").h < b:GetiCompo("Position").y + b:GetiCompo("Size").h
+                    return a:GetiCompo("Transform").y + a:GetiCompo("Transform").h < b:GetiCompo("Transform").y + b:GetiCompo("Transform").h
                 end
             end)
         end

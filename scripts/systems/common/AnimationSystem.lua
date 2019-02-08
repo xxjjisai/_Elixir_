@@ -1,7 +1,7 @@
 _G.AnimationSystem = System:DeriveClass("AnimationSystem");
 
 AnimationSystem:SetRegisterCompo{
-   "Animate","Position","Color","Size","Rotate"
+   "Animate","Transform",
 }
 
 function AnimationSystem:Start()
@@ -104,8 +104,8 @@ function AnimationSystem:Render()
             if not iActor:GetiCompo("Animate").bRunning then 
                break;
             end 
-            local x = iActor:GetiCompo("Position").x;
-            local y = iActor:GetiCompo("Position").y;
+            local x = iActor:GetiCompo("Transform").x;
+            local y = iActor:GetiCompo("Transform").y;
             local iImage = iActor:GetiCompo("Animate").iImage;
             if iImage == nil then 
                self:Trace(1,"there is no image")
@@ -118,14 +118,18 @@ function AnimationSystem:Render()
             end 
             local nQuadW = iActor:GetiCompo("Animate").nQuadW;
             local nQuadH = iActor:GetiCompo("Animate").nQuadH;
-            local w = iActor:GetiCompo("Size").w;
-            local h = iActor:GetiCompo("Size").h;
-            local r = iActor:GetiCompo("Rotate").r;
-            local nImageX = x - (nQuadW * 0.5 - w * 0.5)
+            local w = iActor:GetiCompo("Transform").w;
+            local h = iActor:GetiCompo("Transform").h;
+            local r = iActor:GetiCompo("Transform").r;
+            local ox = iActor:GetiCompo("Transform").ox;
+            local oy = iActor:GetiCompo("Transform").oy;
+            local sx = iActor:GetiCompo("Transform").sx;
+            local sy = iActor:GetiCompo("Transform").sy;
+            local nImageX = x - (nQuadW * 0.5 - w * 0.5);
             local nImageY = y - (nQuadH - h);
             local color = iActor:GetiCompo("Color"); 
-            love.graphics.setColor(color.r,color.g,color.b,color.a);
-            love.graphics.draw(iImage, iCurQuad, nImageX, nImageY,r)
+            love.graphics.setColor(color.r,color.g,color.b,color.a); 
+            love.graphics.draw(iImage, iCurQuad, nImageX, nImageY,r,sx,sy,ox,oy)
             if Option.bDebug then 
                -- 贴图轮廓
                love.graphics.setColor(100,100,250,100);

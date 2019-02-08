@@ -1,7 +1,7 @@
 _G.SpriteRenderSystem = System:DeriveClass("SpriteRenderSystem");
 
 SpriteRenderSystem:SetRegisterCompo{
-    "Sprite","Position","Size","Color","Rotate"
+    "Sprite","Transform","Color"
 }
 
 function SpriteRenderSystem:Render()
@@ -10,24 +10,24 @@ function SpriteRenderSystem:Render()
        for _,iActor in ipairs(tbLayer) do 
           repeat
              if not self:GetRegisterCompo(iActor) then break end
-             local x = iActor:GetiCompo("Position").x;
-             local y = iActor:GetiCompo("Position").y;
-             local w = iActor:GetiCompo("Size").w;
-             local h = iActor:GetiCompo("Size").h;
-             local r = iActor:GetiCompo("Rotate").r;
              local sImg = iActor:GetiCompo("Sprite").sImg;
-             local sx = iActor:GetiCompo("Sprite").sx;
-             local sy = iActor:GetiCompo("Sprite").sy;
-             local ox = iActor:GetiCompo("Sprite").ox;
-             local oy = iActor:GetiCompo("Sprite").oy;
-             local kx = iActor:GetiCompo("Sprite").kx;
-             local ky = iActor:GetiCompo("Sprite").ky; 
+             local x = iActor:GetiCompo("Transform").x;
+             local y = iActor:GetiCompo("Transform").y;
+             local w = iActor:GetiCompo("Transform").w;
+             local h = iActor:GetiCompo("Transform").h;
+             local r = iActor:GetiCompo("Transform").r;
+             local sx = iActor:GetiCompo("Transform").sx;
+             local sy = iActor:GetiCompo("Transform").sy;
+             local ox = iActor:GetiCompo("Transform").ox;
+             local oy = iActor:GetiCompo("Transform").oy;
+             local kx = iActor:GetiCompo("Transform").kx;
+             local ky = iActor:GetiCompo("Transform").ky; 
+             local color = iActor:GetiCompo("Color");
              local image = AssetsMgr:GetTexture(sImg);
              local nImageW = image:getWidth();
              local nImageH = image:getHeight();
              local nImageX = x - (nImageW * 0.5 - w * 0.5)
              local nImageY = y - (nImageH - h);
-             local color = iActor:GetiCompo("Color");
              love.graphics.setColor(color.r,color.g,color.b,color.a);
              love.graphics.draw( image,nImageX, nImageY, r, sx, sy, ox, oy, kx, ky )
             if Option.bDebug then 

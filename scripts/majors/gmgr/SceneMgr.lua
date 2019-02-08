@@ -104,11 +104,12 @@ end
 function SceneMgr:Update(dt)
     if not self.bStart then return end;
     self:UpdateSystem();
-    local px = self.iPlayer:GetiCompo("Position").x;
-    local py = self.iPlayer:GetiCompo("Position").y;
-    local pw = self.iPlayer:GetiCompo("Size").w;
-    local ph = self.iPlayer:GetiCompo("Size").h;
-    -- print(self.iPlayer.sClassName,px, py ,pw ,ph)
+    if not self.iPlayer then return end;
+    -- CameraMgr:Follow(self.iPlayer);
+    local px = self.iPlayer:GetiCompo("Transform").x;
+    local py = self.iPlayer:GetiCompo("Transform").y;
+    local pw = self.iPlayer:GetiCompo("Transform").w;
+    local ph = self.iPlayer:GetiCompo("Transform").h; 
     Camera:follow(px + pw * 0.5, py + ph * 0.5); 
 end 
 
@@ -151,7 +152,6 @@ function SceneMgr:Render()
 end
 
 function SceneMgr:MouseDown(x, y, button, istouch, presses)   
-    self:Trace(1,x,y)
     if self.bStart then 
         local tbSystemList = self.tbCurScene:GetSystemList();
         for _,iSystem in ipairs(tbSystemList) do 

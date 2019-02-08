@@ -1,7 +1,7 @@
 _G.RectangleRenderSystem = System:DeriveClass("RectangleRenderSystem");
 
 RectangleRenderSystem:SetRegisterCompo{
-   "RenderLayer","Rectangle","Size","Position","Color"
+   "Rectangle","RenderLayer","Transform","Color"
 }
 
 function RectangleRenderSystem:Render()
@@ -10,10 +10,10 @@ function RectangleRenderSystem:Render()
       for _,iActor in ipairs(tbLayer) do 
          repeat
             if not self:GetRegisterCompo(iActor) then break end
-            local x = iActor:GetiCompo("Position").x;
-            local y = iActor:GetiCompo("Position").y;
-            local w = iActor:GetiCompo("Size").w;
-            local h = iActor:GetiCompo("Size").h;
+            local x = iActor:GetiCompo("Transform").x;
+            local y = iActor:GetiCompo("Transform").y;
+            local w = iActor:GetiCompo("Transform").w;
+            local h = iActor:GetiCompo("Transform").h;
             local sFillType = iActor:GetiCompo("Rectangle").sFillType;
             local color = iActor:GetiCompo("Color");
             love.graphics.setColor(color.r,color.g,color.b,color.a);
