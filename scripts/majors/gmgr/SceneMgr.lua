@@ -7,8 +7,13 @@ SceneMgr.iPlayer = false;
 SceneMgr.tbSceneList = {};
 SceneMgr.nPlayerIndex = 1;
 
-function SceneMgr:Start()
+function SceneMgr:Start()  
+    self.tbCurScene = nil;
+    self.nSceneID = 0;
     self.bStart = false;
+    self.iPlayer = false;
+    self.tbSceneList = {};
+    self.nPlayerIndex = 1;
     self.tbCurScene = Scene:DeriveClass("Scene");
     table.insert(self.tbSceneList,self.tbCurScene);
     self.nSceneID = self.nSceneID + 1;
@@ -103,14 +108,9 @@ end
 
 function SceneMgr:Update(dt)
     if not self.bStart then return end;
-    self:UpdateSystem();
+    self:UpdateSystem(dt);
     if not self.iPlayer then return end;
-    -- CameraMgr:Follow(self.iPlayer);
-    local px = self.iPlayer:GetiCompo("Transform").x;
-    local py = self.iPlayer:GetiCompo("Transform").y;
-    local pw = self.iPlayer:GetiCompo("Transform").w;
-    local ph = self.iPlayer:GetiCompo("Transform").h; 
-    Camera:follow(px + pw * 0.5, py + ph * 0.5); 
+    CameraMgr:Follow(self.iPlayer);
 end 
 
 function SceneMgr:Render()
@@ -158,7 +158,7 @@ function SceneMgr:MouseDown(x, y, button, istouch, presses)
             if iSystem.MouseDown then 
                 iSystem:MouseDown(x, y, button, istouch, presses);
             end
-        end
+        end 
     end
 end
 
@@ -196,8 +196,7 @@ function SceneMgr:KeyBoardDown(key, scancode, isrepeat)
         if key == "space" then 
             self.nPlayerIndex = self.nPlayerIndex + 1;
             self.iPlayer,self.nPlayerIndex = self.tbCurScene:GetPlayer(self.nPlayerIndex)
-        end 
-
+        end  
     end
 end
 

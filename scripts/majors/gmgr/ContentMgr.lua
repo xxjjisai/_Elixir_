@@ -15,6 +15,12 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
 end
 
 function ContentMgr:UninstallHandler(iScene,fCallback)
+    local tbSystemList = iScene:GetSystemList();
+    for _,iSystem in ipairs(tbSystemList) do 
+        if iSystem.Destory then 
+            iSystem:Destory();
+        end
+    end
     iScene:UninstallActor();
     iScene:UninstallSystem();
     if fCallback then fCallback(); end 

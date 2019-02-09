@@ -41,6 +41,8 @@ function love.load()
 end
 
 function love.update(dt)
+    _G.graphicsWidth  = love.graphics.getWidth();
+    _G.graphicsHeight = love.graphics.getHeight();
     if Option.bDoFileComplete then 
         Timer:update(dt); 
         Tween.update(dt);

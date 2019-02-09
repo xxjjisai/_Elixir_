@@ -33,3 +33,7 @@ function System:GetRegisterCompo(iActor)
     return false;
 end 
 
+function System:Destory()
+
+end
+

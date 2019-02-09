@@ -6,7 +6,7 @@ function GameChainSystem:Start()
     self.iChain = nil;
     self.nCurIndex = 0;
     self:StartHandler();
-end
+end 
 
 function GameChainSystem:NextProcess(pfn)
     self.tbChainList = {};
@@ -32,24 +32,35 @@ function GameChainSystem:ExecuteChain(bExecute,onComplete)
         return;
     end 
     self.iChain = self.tbChainList[self.nCurIndex];
-    self.iChain:Execute(function ()
-        if self.iChain.Complete then 
-            self.iChain:Complete(function()
-                if bExecute then 
-                    self:ExecuteChain(bExecute,onComplete)
-                end 
-            end);
-        else 
-            if bExecute then 
-                self:ExecuteChain(bExecute,onComplete)
-            end 
-        end
-    end);
+    if self.iChain then 
+        self.iChain:Execute(function ()
+            if self.iChain then 
+                if self.iChain.Complete then 
+                    self.iChain:Complete(function()
+                        if bExecute then 
+                            self:ExecuteChain(bExecute,onComplete)
+                        end 
+                    end);
+                else 
+                    if bExecute then 
+                        self:ExecuteChain(bExecute,onComplete)
+                    end 
+                end
+            end
+        end);
+    end
 end
 
 function GameChainSystem:CreateChain(nExecuteTime,onExecute,onComplete)
     local sClassName = "Chain"..Origin:SetUniqueID();
     local iChain = Chain:DeriveClass(sClassName, nExecuteTime, onExecute, onComplete);
     table.insert(self.tbChainList,iChain)
+end
+
+function GameChainSystem:Destory()
+    self.tbChainList = {};
+    self.iChain = nil;
+    self.nCurIndex = 0;
+    self:DestoryHandler();
 end
 
