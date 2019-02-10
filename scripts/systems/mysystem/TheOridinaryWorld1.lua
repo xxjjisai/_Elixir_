@@ -6,7 +6,10 @@ function TheOridinaryWorld1:StartHandler()
     self.bBreak = true;
     self.tbBulletList = {};
     self.iEnemy = nil;
-    Option.bBackGroundStatic = false;
+    Option.bCamera_FollowPlayer = false;
+    self.o_camera_scale = Camera.scale;
+    self.o_camera_x = Camera.x;
+    self.o_camera_y = Camera.y;
     -- love.window.setMode( graphicsWidth, graphicsHeight, {
     --     resizable = false;
     -- } )
@@ -24,12 +27,14 @@ function TheOridinaryWorld1:Process_1()
     local iAniSystem = self.iScene:GetSystemByName("AnimationSystem");
     -- 创建链条
     self:CreateChain(1,function(pfn)
-        self:Trace(1,iPlayer:GetiCompo("Transform").y)
         Tween(2,iPlayer:GetiCompo("Transform"),
-            { y = 500 },'inOutBack',function ()
+            { y = 500 },'inOutBack',function () 
             if pfn then pfn() end
         end)
     end);
+
+
+
     -- 创建链条
     self:CreateChain(0.1,function(pfn)
         local iEnemy = ActorMgr:CreateActor("Enemy")
@@ -44,6 +49,47 @@ function TheOridinaryWorld1:Process_1()
             if pfn then pfn() end
         end) 
     end);
+
+    self:CreateChain(1,function(pfn) 
+        Tween(0.3,Camera,
+            { y = 550 },'linear',function ()
+            Tween(0.2,Camera,
+                { scale = 3 },'linear',function ()
+                if pfn then pfn() end
+            end)
+        end)
+    end);
+
+    self:CreateChain(1,function(pfn) 
+        Tween(0.5,Camera,
+            { scale = self.o_camera_scale },'linear',function ()
+            Tween(0.2,Camera,
+                { y = self.o_camera_y },'linear',function ()
+                if pfn then pfn() end
+            end)
+        end)
+    end);
+
+    self:CreateChain(1,function(pfn) 
+        Tween(0.5,Camera,
+            { y = 150 },'linear',function ()
+            Tween(0.2,Camera,
+                { scale = 3 },'linear',function ()
+                if pfn then pfn() end
+            end)
+        end)
+    end);
+
+    self:CreateChain(1,function(pfn) 
+        Tween(0.5,Camera,
+            { scale = self.o_camera_scale },'linear',function ()
+            Tween(0.2,Camera,
+                { y = self.o_camera_y },'linear',function ()
+                if pfn then pfn() end
+            end)
+        end)
+    end);
+
     -- 执行链条
     self:ExecuteChain(true,function ()
         self:NextProcess(function ()

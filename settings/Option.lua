@@ -16,4 +16,5 @@ _G.Option =
     nMaxSceneCount = 0;                             -- [N]如果是设计的场景，场景总数，在 include 中进行赋值
     bStore = false;                                 -- [Y]是否开启外部存储
     bBackGroundStatic = true;                      -- [Y]游戏背景是否为静态（是否开启摄像机干涉）
+    bCamera_FollowPlayer = true;                   -- [Y]摄像机是否跟随玩家
 }

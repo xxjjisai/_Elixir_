@@ -110,7 +110,9 @@ function SceneMgr:Update(dt)
     if not self.bStart then return end;
     self:UpdateSystem(dt);
     if not self.iPlayer then return end;
-    CameraMgr:Follow(self.iPlayer);
+    if Option.bCamera_FollowPlayer then 
+        CameraMgr:Follow(self.iPlayer);
+    end
 end 
 
 function SceneMgr:Render()
