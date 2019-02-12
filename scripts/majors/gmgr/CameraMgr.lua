@@ -47,7 +47,6 @@ end
 
 function CameraMgr:Follow(iActor)  
     if not Option.bCamera_FollowPlayer then  return end;
-    self:Trace(1,"CameraMgr:Follow")
     local nActorX = iActor:GetiCompo("Transform").x;
     local nActorY = iActor:GetiCompo("Transform").y;
     local nActorW = iActor:GetiCompo("Transform").w;

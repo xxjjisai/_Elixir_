@@ -83,11 +83,7 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"UserInterfaceSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
-    self:RequireHandler(strMysystemDir,"TheOridinaryWorld1");
     self:RequireHandler(strMysystemDir,"TheOridinaryWorld");
-    self:RequireHandler(strMysystemDir,"ShootBulletSystem");
-    -- self:RequireHandler(strMysystemDir,"PlayMechanism2");
-    -- self:RequireHandler(strMysystemDir,"MouseMoveSystem");
 
 end
 

@@ -8,7 +8,6 @@ end
 
 function TheOridinaryWorld:Init(pfn) 
     Camera.scale = 1;
-    self.camera_deadzone = Camera.deadzone;
     if pfn then pfn() end
 end
 
@@ -45,4 +44,8 @@ function TheOridinaryWorld:Process_1()
             -- self:Process_1();
         end);
     end);
+end
+
+function TheOridinaryWorld:DestoryHandler()
+    Camera.scale = 1;
 end

@@ -12,8 +12,6 @@ _G.Scene_1 =
         "LayerSortSystem",
         "SpriteRenderSystem",
         "AnimationSystem",
-        -- "TheOridinaryWorld1",
         "TheOridinaryWorld",
-        "ShootBulletSystem",
     };
 }

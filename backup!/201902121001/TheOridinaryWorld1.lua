@@ -33,8 +33,6 @@ function TheOridinaryWorld1:Process_1()
         end)
     end);
 
-
-
     -- 创建链条
     self:CreateChain(0.1,function(pfn)
         local iEnemy = ActorMgr:CreateActor("Enemy")
