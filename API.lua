@@ -53,7 +53,9 @@
 -- })
 
 -- 操作摄像头
--- Tween(1,Camera,{ scale = 2 },'linear',function ()
+-- Option.bCamera_FollowPlayer = false -- 先停止摄像机跟随
+-- Tween(2,Camera,
+--     { target_x = 200,scale = 2 },'linear',function () 
 --     if pfn then pfn() end
 -- end)
 
