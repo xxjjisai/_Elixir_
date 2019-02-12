@@ -12,7 +12,8 @@ require("scripts/majors/base/Model");
 require("scripts/majors/base/Chain");
 
 require("settings/Option");
-require("settings/include");
+
+require("include");
 
 -- 系统列表
 function love.load()

@@ -1,8 +1,8 @@
 _G.GameTextCfg = 
 {
     GetTextFunc = function (nIndex)
-        -- return _G[LanguageType.English.."Language"][nIndex];
-        return _G[LanguageType.Chinese.."Language"][nIndex];
+        return _G[LanguageType.English.."Language"][nIndex];
+        -- return _G[LanguageType.Chinese.."Language"][nIndex];
     end
 }
 

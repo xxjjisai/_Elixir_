@@ -1,6 +1,6 @@
 _G.Option = 
 {
-    bDebug = false;                                  -- [Y]是否为调试模式
+    bDebug = false;                                 -- [Y]是否为调试模式
     bGameInfo = false;                              -- [Y]System及Actor信息
     bDoFileComplete = false;                        -- [N]文件是否加载完成
     bMenuPlayed = true;                             -- [Y]是否播放赞助商
@@ -11,10 +11,10 @@ _G.Option =
     bExit = false;                                  -- [N]是否退出
     bCamera_MouseMove = true;                       -- [Y]是否适用鼠标右键移动摄像机
     bCamera_KeyMove = false;                        -- [Y]是否适用键盘 Left Shift 移动摄像机
-    bCamera_MouseScale = true;                     -- [Y]是否鼠标滚轮缩放摄像机
+    bCamera_MouseScale = true;                      -- [Y]是否鼠标滚轮缩放摄像机
     bPaused = false;                                -- [Y]是否暂停
     nMaxSceneCount = 0;                             -- [N]如果是设计的场景，场景总数，在 include 中进行赋值
     bStore = false;                                 -- [Y]是否开启外部存储
-    bBackGroundStatic = true;                      -- [Y]游戏背景是否为静态（是否开启摄像机干涉）
-    bCamera_FollowPlayer = true;                   -- [Y]摄像机是否跟随玩家
+    bBackGroundStatic = true;                       -- [Y]游戏背景是否为静态（是否开启摄像机干涉）
+    bCamera_FollowPlayer = true;                    -- [Y]摄像机是否跟随玩家
 }
