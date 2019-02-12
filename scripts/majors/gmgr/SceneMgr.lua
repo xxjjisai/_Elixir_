@@ -145,12 +145,11 @@ function SceneMgr:Render()
         love.graphics.setColor(1,0,1,1);
         love.graphics.setFont(AssetsMgr:GetFont(241));
         love.graphics.print(str_stats,10,graphicsHeight - 20);
-
+        -- 玩家坐标
         local px = self.iPlayer:GetiCompo("Transform").x
         local py = self.iPlayer:GetiCompo("Transform").y
         local str_player_pos = ("playerX:%d,playerY:%d"):format(px,py);
         love.graphics.print(str_player_pos,10,graphicsHeight - 40);
-        
         -- 屏幕交点
         love.graphics.line( 0, graphicsHeight * 0.5, graphicsWidth, graphicsHeight * 0.5 )
         love.graphics.line( graphicsWidth * 0.5, 0, graphicsWidth * 0.5, graphicsHeight )

@@ -16,7 +16,6 @@ function TheOridinaryWorld:Process_1()
     local iScene = self:GetCurScene();
     -- 当前玩家
     local iPlayer = iScene:GetPlayer();
-
     -- 创建链条 
     self:CreateChain(3,function(pfn)
         Option.bCamera_FollowPlayer = false
@@ -44,6 +43,7 @@ function TheOridinaryWorld:Process_1()
             -- self:Process_1();
         end);
     end);
+
 end
 
 function TheOridinaryWorld:DestoryHandler()

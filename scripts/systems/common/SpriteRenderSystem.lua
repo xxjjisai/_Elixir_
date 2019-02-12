@@ -8,28 +8,30 @@ function SpriteRenderSystem:Render()
     local iScene = self:GetCurScene();
     for _,tbLayer in pairs(iScene:GetRenderList()) do
        for _,iActor in ipairs(tbLayer) do 
-          repeat
-             if not self:GetRegisterCompo(iActor) then break end
-             local sImg = iActor:GetiCompo("Sprite").sImg;
-             local x = iActor:GetiCompo("Transform").x;
-             local y = iActor:GetiCompo("Transform").y;
-             local w = iActor:GetiCompo("Transform").w;
-             local h = iActor:GetiCompo("Transform").h;
-             local r = iActor:GetiCompo("Transform").r;
-             local sx = iActor:GetiCompo("Transform").sx;
-             local sy = iActor:GetiCompo("Transform").sy;
-             local ox = iActor:GetiCompo("Transform").ox;
-             local oy = iActor:GetiCompo("Transform").oy;
-             local kx = iActor:GetiCompo("Transform").kx;
-             local ky = iActor:GetiCompo("Transform").ky; 
-             local color = iActor:GetiCompo("Color");
-             local image = AssetsMgr:GetTexture(sImg);
-             local nImageW = image:getWidth();
-             local nImageH = image:getHeight();
-             local nImageX = x - (nImageW * 0.5 - w * 0.5)
-             local nImageY = y - (nImageH - h);
-             love.graphics.setColor(color.r,color.g,color.b,color.a);
-             love.graphics.draw( image,nImageX, nImageY, r, sx, sy, ox, oy, kx, ky )
+         repeat
+            if not self:GetRegisterCompo(iActor) then break end
+            local iCompoTransform = iActor:GetiCompo("Transform");
+            local iCompoSprite = iActor:GetiCompo("Sprite");
+            local iCompoColor = iActor:GetiCompo("Color");
+            local sImg = iCompoSprite.sImg;
+            local x = iCompoTransform.x;
+            local y = iCompoTransform.y;
+            local w = iCompoTransform.w;
+            local h = iCompoTransform.h;
+            local r = iCompoTransform.r;
+            local sx = iCompoTransform.sx;
+            local sy = iCompoTransform.sy;
+            local ox = iCompoTransform.ox;
+            local oy = iCompoTransform.oy;
+            local kx = iCompoTransform.kx;
+            local ky = iCompoTransform.ky; 
+            local image = AssetsMgr:GetTexture(sImg);
+            local nImageW = image:getWidth();
+            local nImageH = image:getHeight();
+            local nImageX = x - (nImageW * 0.5 - w * 0.5)
+            local nImageY = y - (nImageH - h);
+            love.graphics.setColor(iCompoColor.r,iCompoColor.g,iCompoColor.b,iCompoColor.a);
+            love.graphics.draw( image,nImageX, nImageY, r, sx, sy, ox, oy, kx, ky )
             if Option.bDebug then 
                 -- 贴图轮廓
                 love.graphics.setColor(100,100,250,100);
@@ -38,7 +40,7 @@ function SpriteRenderSystem:Render()
                 love.graphics.setColor(250,0,0,250); 
                 love.graphics.circle( "fill",nImageX + nImageW / 2, nImageY + nImageH, 7 ) 
             end
-          until true
+         until true
        end
     end 
  end

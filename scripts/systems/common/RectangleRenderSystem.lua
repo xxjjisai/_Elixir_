@@ -10,13 +10,15 @@ function RectangleRenderSystem:Render()
       for _,iActor in ipairs(tbLayer) do 
          repeat
             if not self:GetRegisterCompo(iActor) then break end
-            local x = iActor:GetiCompo("Transform").x;
-            local y = iActor:GetiCompo("Transform").y;
-            local w = iActor:GetiCompo("Transform").w;
-            local h = iActor:GetiCompo("Transform").h;
-            local sFillType = iActor:GetiCompo("Rectangle").sFillType;
-            local color = iActor:GetiCompo("Color");
-            love.graphics.setColor(color.r,color.g,color.b,color.a);
+            local iCompoTransform = iActor:GetiCompo("Transform");
+            local iCompoRectangle = iActor:GetiCompo("Rectangle");
+            local iCompoColor = iActor:GetiCompo("Color");
+            local x = iCompoTransform.x;
+            local y = iCompoTransform.y;
+            local w = iCompoTransform.w;
+            local h = iCompoTransform.h;
+            local sFillType = iCompoRectangle.sFillType;
+            love.graphics.setColor(iCompoColor.r,iCompoColor.g,iCompoColor.b,iCompoColor.a);
             love.graphics.rectangle(sFillType,x,y,w,h);
          until true
       end

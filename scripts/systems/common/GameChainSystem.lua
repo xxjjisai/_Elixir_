@@ -16,7 +16,11 @@ function GameChainSystem:NextProcess(pfn)
 end
 
 function GameChainSystem:StartHandler()
-    self:Trace(3,"you must Implementation !!!")
+    self:Trace(3,"GameChainSystem StartHandler you must Implementation !!!")
+end
+
+function GameChainSystem:DestoryHandler()
+    self:Trace(3,"GameChainSystem DestoryHandler you must Implementation !!!")
 end
 
 function GameChainSystem:ExecuteChain(bExecute,onComplete)
