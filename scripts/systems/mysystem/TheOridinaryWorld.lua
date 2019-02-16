@@ -40,7 +40,7 @@ function TheOridinaryWorld:Process_1()
     -- 执行链条
     self:ExecuteChain(true,function ()
         self:NextProcess(function ()
-            -- self:Process_1();
+            self:Process_1();
         end);
     end);
 
