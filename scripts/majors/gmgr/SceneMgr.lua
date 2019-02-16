@@ -109,10 +109,8 @@ end
 function SceneMgr:Update(dt)
     if not self.bStart then return end;
     self:UpdateSystem(dt);
-    if not self.iPlayer then return end;
-    if Option.bCamera_FollowPlayer then 
-        CameraMgr:Follow(self.iPlayer);
-    end
+    if not self.iPlayer then return end; 
+    CameraMgr:Follow(self.iPlayer);
 end 
 
 function SceneMgr:Render()
@@ -150,6 +148,7 @@ function SceneMgr:Render()
         -- 屏幕交点
         love.graphics.line( 0, graphicsHeight * 0.5, graphicsWidth, graphicsHeight * 0.5 )
         love.graphics.line( graphicsWidth * 0.5, 0, graphicsWidth * 0.5, graphicsHeight )
+        love.graphics.rectangle("line",Camera.x,Camera.y,Camera.w,Camera.h)
     end
 end
 

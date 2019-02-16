@@ -3,8 +3,10 @@ _G.GameMgr = Class:DeriveClass("GameMgr");
 function GameMgr:StartUp()
     Option.sTitle = love.window.getTitle();
     Option.sGameState = "LOAD";
-    Camera:setFollowLerp(0.09);
-    Camera:setFollowStyle('LOCKON');
+    _G.Camera_Follow_Lerp = 0.09;
+    _G.Camera_Follow_Style = "LOCKON";
+    Camera:setFollowLerp(Camera_Follow_Lerp);
+    Camera:setFollowStyle(Camera_Follow_Style);
     StorageMgr:Init();
     StorageMgr:InitInfo();
     AssetsMgr:Start("Currency",function()

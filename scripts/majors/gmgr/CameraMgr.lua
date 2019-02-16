@@ -46,11 +46,14 @@ function CameraMgr:Update(dt)
 end 
 
 function CameraMgr:Follow(iActor)  
+    if not Option.bCamera_FollowPlayer then  return end;
+    self:Trace(1,"CameraMgr:Follow")
     local nActorX = iActor:GetiCompo("Transform").x;
     local nActorY = iActor:GetiCompo("Transform").y;
     local nActorW = iActor:GetiCompo("Transform").w;
     local nActorH = iActor:GetiCompo("Transform").h;
-    Camera:follow(nActorX + nActorW * 0.5, nActorY + nActorH * 0.5);
+    local tx,ty = nActorX + nActorW * 0.5, nActorY + nActorH * 0.5;
+    Camera:follow(tx,ty);
 end 
 
 function CameraMgr:Attach()
