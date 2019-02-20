@@ -17,7 +17,7 @@ function TheOridinaryWorld:Process_1()
     -- 当前玩家
     local iPlayer = iScene:GetPlayer();
     -- 当前系统
-    
+
     -- 创建链条 
     self:CreateChain(3,function(pfn)
         Option.bCamera_FollowPlayer = false;
@@ -26,7 +26,26 @@ function TheOridinaryWorld:Process_1()
             if pfn then pfn() end
         end)
     end);
- 
+
+    self:CreateChain(1,function(pfn) 
+        Tween(2,iPlayer:GetiCompo("Color"),
+            { a = 0 },'linear',function () 
+            if pfn then pfn() end
+        end)
+    end);
+    
+    self:CreateChain(1,function(pfn) 
+        Tween(2,iPlayer:GetiCompo("Color"),
+            { a = 1 },'linear',function () 
+            if pfn then pfn() end
+        end)
+    end);
+
+    self:CreateChain(1,function(pfn)
+        Option.bCamera_FollowPlayer = true;
+        if pfn then pfn() end
+    end);
+
     -- 执行链条
     self:ExecuteChain(true,function ()
         self:NextProcess(function ()
