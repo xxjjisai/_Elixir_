@@ -84,6 +84,7 @@ function Include:GlobalSystem()
 
     local strMysystemDir = "scripts/systems/mysystem/";
     self:RequireHandler(strMysystemDir,"TheOridinaryWorld");
+    self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem");
 
 end
 

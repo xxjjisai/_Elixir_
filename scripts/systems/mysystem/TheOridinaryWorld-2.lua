@@ -29,11 +29,19 @@ function TheOridinaryWorld:Process_1()
             if pfn then pfn() end
         end)
     end);
+
+    self:CreateChain(3,function(pfn)
+        Tween(2,Camera,
+            { scale = 1 },'linear',function () 
+            ikeyboardSystem:SetActive(iPlayer,false)
+            if pfn then pfn() end
+        end)
+    end);
  
     -- 执行链条
     self:ExecuteChain(true,function ()
         self:NextProcess(function ()
-            -- self:Process_1();
+            self:Process_1();
         end);
     end);
 

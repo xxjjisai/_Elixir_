@@ -13,5 +13,6 @@ _G.Scene_1 =
         "SpriteRenderSystem",
         "AnimationSystem",
         "TheOridinaryWorld",
+        "KeyBoardMoveSystem",
     };
 }
