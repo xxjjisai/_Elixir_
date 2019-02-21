@@ -57,7 +57,7 @@ function AnimationSystem:Update(dt)
 				if not self:GetRegisterCompo(iActor) then break end
 				local iCompoAnimate = iActor:GetiCompo("Animate");
 				if not iCompoAnimate.bRunning then 
-				break;
+					break;
 				end 
 				local nTimeAfterPlay = iCompoAnimate.nTimeAfterPlay;
 				local nLastTime = iCompoAnimate.nLastTime;
@@ -67,30 +67,30 @@ function AnimationSystem:Update(dt)
 				local nLoop = iCompoAnimate.nLoop;
 				local nNowTime = GetTime();
 				if nNowTime - nLastTime > nTimeAfterPlay then 
-				iCompoAnimate.nLastTime = nNowTime;
-				iCompoAnimate.nCurFrame = iCompoAnimate.nCurFrame + 1;
-				if iCompoAnimate.nCurFrame > nTotalFrame then 
-					if nLoop == 0 then 
-						iCompoAnimate.nCurPlayCount = iCompoAnimate.nCurPlayCount + 1;
-						if iCompoAnimate.nCurPlayCount >= nTotalPlayCount then 
-							iCompoAnimate.iCurQuad = nil;
-							iCompoAnimate.bRunning = false;
-							if self.fComplete then 
-							self.fComplete();
-							end 
-							break;
-						else 
+					iCompoAnimate.nLastTime = nNowTime;
+					iCompoAnimate.nCurFrame = iCompoAnimate.nCurFrame + 1;
+					if iCompoAnimate.nCurFrame > nTotalFrame then 
+						if nLoop == 0 then 
+							iCompoAnimate.nCurPlayCount = iCompoAnimate.nCurPlayCount + 1;
+							if iCompoAnimate.nCurPlayCount >= nTotalPlayCount then 
+								iCompoAnimate.iCurQuad = nil;
+								iCompoAnimate.bRunning = false;
+								if self.fComplete then 
+								self.fComplete();
+								end 
+								break;
+							else 
+								iCompoAnimate.nCurFrame = 1;
+								iCompoAnimate.iCurQuad = iCompoAnimate.tbQuad[iCompoAnimate.nCurFrame];
+								break;
+							end
+						elseif nLoop == 1 then  
 							iCompoAnimate.nCurFrame = 1;
 							iCompoAnimate.iCurQuad = iCompoAnimate.tbQuad[iCompoAnimate.nCurFrame];
-							break;
 						end
-					elseif nLoop == 1 then  
-						iCompoAnimate.nCurFrame = 1;
+					else 
 						iCompoAnimate.iCurQuad = iCompoAnimate.tbQuad[iCompoAnimate.nCurFrame];
 					end
-				else 
-					iCompoAnimate.iCurQuad = iCompoAnimate.tbQuad[iCompoAnimate.nCurFrame];
-				end
 				end 
 			until true
 		end

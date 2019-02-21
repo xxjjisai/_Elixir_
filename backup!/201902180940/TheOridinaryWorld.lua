@@ -8,6 +8,7 @@ end
 
 function TheOridinaryWorld:Init(pfn) 
     Camera.scale = 1;
+
     if pfn then pfn() end
 end
 
@@ -16,33 +17,28 @@ function TheOridinaryWorld:Process_1()
     local iScene = self:GetCurScene();
     -- 当前玩家
     local iPlayer = iScene:GetPlayer();
-    -- 当前系统
-
     -- 创建链条 
     self:CreateChain(3,function(pfn)
         Option.bCamera_FollowPlayer = false;
+        Option.bCamera_MouseMove = false;
+        Option.bCamera_MouseScale = false;
         Tween(2,Camera,
-            { scale = 2 },'linear',function () 
+            { target_x = 200,scale = 2 },'linear',function () 
             if pfn then pfn() end
         end)
     end);
 
-    self:CreateChain(1,function(pfn) 
-        Tween(2,iPlayer:GetiCompo("Color"),
-            { a = 0 },'linear',function () 
-            if pfn then pfn() end
-        end)
-    end);
-    
-    self:CreateChain(1,function(pfn) 
-        Tween(2,iPlayer:GetiCompo("Color"),
-            { a = 1 },'linear',function () 
+    self:CreateChain(1,function(pfn)
+        Tween(2,Camera,
+            { target_y = 200,scale = 1 },'linear',function ()
             if pfn then pfn() end
         end)
     end);
 
     self:CreateChain(1,function(pfn)
         Option.bCamera_FollowPlayer = true;
+        Option.bCamera_MouseMove = true;
+        Option.bCamera_MouseScale = true;
         if pfn then pfn() end
     end);
 

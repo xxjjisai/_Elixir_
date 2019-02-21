@@ -4,7 +4,6 @@ _G.Scene_1 =
     tbActor = 
     {
         { sActorType = "Player"; },
-        { sActorType = "Enemy"; },
     };
 
     tbSystem = 
