@@ -54,6 +54,7 @@ function Include:GlobalManager()
     self:RequireHandler(strDir,"CameraMgr");
     self:RequireHandler(strDir,"PauseMgr");
     self:RequireHandler(strDir,"OverMgr");
+    self:RequireHandler(strDir,"UIMgr");
 end 
 
 function Include:GlobalConfig()
@@ -79,8 +80,8 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"SpriteRenderSystem");
     self:RequireHandler(strCommonDir,"AnimationSystem");
     self:RequireHandler(strCommonDir,"GameChainSystem");
-    self:RequireHandler(strCommonDir,"UISystem");
-    self:RequireHandler(strCommonDir,"UserInterfaceSystem");
+    -- self:RequireHandler(strCommonDir,"UISystem");
+    -- self:RequireHandler(strCommonDir,"UserInterfaceSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
     self:RequireHandler(strMysystemDir,"TheOridinaryWorld");

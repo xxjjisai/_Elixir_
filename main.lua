@@ -10,6 +10,7 @@ require("scripts/majors/base/Scene");
 require("scripts/majors/base/System");
 require("scripts/majors/base/Model");
 require("scripts/majors/base/Chain");
+require("scripts/majors/base/UI");
 
 require("settings/Option");
 
@@ -45,8 +46,6 @@ function love.update(dt)
     -- _G.graphicsWidth  = love.graphics.getWidth();
     -- _G.graphicsHeight = love.graphics.getHeight();
     if Option.bDoFileComplete then 
-        Timer:update(dt); 
-        Tween.update(dt);
         GameMgr:Update(dt); 
     end 
 end

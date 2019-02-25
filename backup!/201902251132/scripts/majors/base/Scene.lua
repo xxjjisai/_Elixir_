@@ -41,6 +41,28 @@ function Scene:RemoveActor(iActor)
     end 
 end
 
+function Scene:AddUI(iUI)
+    table.insert(self.tbUIList,iUI);
+end
+
+function Scene:GetAllUI()
+    return self.tbUIList;
+end
+
+function Scene:RemoveUI(iUI)
+    for i,v in ipairs(self.tbActorList) do 
+        if v.sClassName == iUI.sClassName then 
+            table.remove(self.tbUIList,i);
+            break;
+        end 
+    end
+end
+
+-- 卸载当前场景之前清空当前场景的UI
+function Scene:ClearUI(iUI)
+    self.tbUIList = {};
+end
+
 function Scene:GetActorList()
     return self.tbActorList;
 end

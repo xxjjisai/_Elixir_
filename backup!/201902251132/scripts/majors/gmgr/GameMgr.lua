@@ -23,13 +23,6 @@ end
 
 function GameMgr:Update(dt)
     love.window.setTitle(Option.sTitle.." ["..love.timer.getFPS().."]" );
-
-    if not (Option.sGameState == "PAUSE") then 
-        Timer:update(dt); 
-        Tween.update(dt);
-        UIMgr:Update(dt);
-    end
-
     if Option.sGameState == "LOAD" then 
         AssetsMgr:Update(dt);
     elseif Option.sGameState == "MENU" then 
@@ -42,7 +35,9 @@ function GameMgr:Update(dt)
         CameraMgr:Update(dt); 
         SceneMgr:Update(dt)
     elseif Option.sGameState == "EDITOR" then 
+
     elseif Option.sGameState == "OVER" then 
+
     end
 end 
 
@@ -64,18 +59,12 @@ function GameMgr:Render()
     elseif Option.sGameState == "OVER" then 
         OverMgr:Render();
     end
-
-    if not (Option.sGameState == "PAUSE") then 
-        UIMgr:Render();
-    end
-
 end 
 
 function GameMgr:MouseDown(x, y, button, istouch, presses)
     if Option.sGameState == "PLAY" then
         CameraMgr:MouseDown(x,y,button);
         SceneMgr:MouseDown(x, y, button, istouch, presses);
-        UIMgr:MouseDown(x,y,button);
     end    
 end
 
