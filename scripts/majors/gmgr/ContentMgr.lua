@@ -8,6 +8,11 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
         iScene:AddActor(iActor);
         iActor:ChangeiCompoParam(tbActor.tbProperty);
     end 
+    if cfg.tbUI then 
+        for _,tbUI in ipairs(cfg.tbUI) do 
+            local iUI = UIMgr:CreateUI(tbUI.sUIType,tbUI.sUseName,tbUI.tbProperty);
+        end 
+    end
     for _,sSystemName in ipairs(cfg.tbSystem) do 
         iScene:RegisterSystem(_G[sSystemName]);
     end

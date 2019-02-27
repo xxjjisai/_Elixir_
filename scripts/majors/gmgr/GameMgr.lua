@@ -27,7 +27,7 @@ function GameMgr:Update(dt)
     if not (Option.sGameState == "PAUSE") then 
         Timer:update(dt); 
         Tween.update(dt);
-        UIMgr:Update(dt);
+        -- UIMgr:Update(dt);
     end
 
     if Option.sGameState == "LOAD" then 
@@ -65,9 +65,9 @@ function GameMgr:Render()
         OverMgr:Render();
     end
 
-    if not (Option.sGameState == "PAUSE") then 
-        UIMgr:Render();
-    end
+    -- if not (Option.sGameState == "PAUSE") then 
+    --     UIMgr:Render();
+    -- end
 
 end 
 
@@ -75,7 +75,7 @@ function GameMgr:MouseDown(x, y, button, istouch, presses)
     if Option.sGameState == "PLAY" then
         CameraMgr:MouseDown(x,y,button);
         SceneMgr:MouseDown(x, y, button, istouch, presses);
-        UIMgr:MouseDown(x,y,button);
+        -- UIMgr:MouseDown(x,y,button);
     end    
 end
 
@@ -133,6 +133,9 @@ function GameMgr:KeyBoardDown(key, scancode, isrepeat)
 
     if key == "1" then 
         SceneMgr:SetAppointScene(1)
+    end
+    if key == "2" then 
+        SceneMgr:SetAppointScene(2)
     end
 
 end

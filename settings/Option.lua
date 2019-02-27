@@ -1,11 +1,11 @@
 _G.Option = 
 {
-    bDebug = false;                                 -- [Y]是否为调试模式
+    bDebug = true;                                 -- [Y]是否为调试模式
     sGameType = "ROGUELIKE";                        -- [Y]当前游戏类型（用来设定渲染层级方式等）
     bGameInfo = false;                              -- [Y]System及Actor信息
     bDoFileComplete = false;                        -- [N]文件是否加载完成
     bMenuPlayed = true;                             -- [Y]是否播放赞助商
-    bLog = false;                                   -- [Y]日志
+    bLog = true;                                   -- [Y]日志
     bLoaded = false;                                -- [N]是否加载资源完成
     sTitle = "";                                    -- [N]标题
     sGameState = "LOAD";                            -- [Y]游戏全局状态机 LOAD MENU PLAY OVER

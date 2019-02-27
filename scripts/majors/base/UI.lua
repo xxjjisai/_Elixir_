@@ -7,6 +7,7 @@ function UI:DeriveClass(sClassName)
     obj.tbAttributeList = {};      -- 组件列表
     obj.nUniqueID = 0;          -- 唯一识别
     obj.sTagType = "UI";     -- 标签类型
+    obj.sUseName = "UI";     -- 使用名称
 	setmetatable(obj,{__index = self});
 	return obj;
 end

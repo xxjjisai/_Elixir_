@@ -68,9 +68,11 @@ function Include:GlobalConfig()
     local gamesCfgStrDir = strDir.."gamecfgs/";
     self:RequireHandler(gamesCfgStrDir,"GameTypeCfg");
     self:RequireHandler(gamesCfgStrDir,"GameTextCfg");
+    self:RequireHandler(gamesCfgStrDir,"GameDataCfg");
 
     local sceneCfgStrDir = strDir.."scenecfgs/";
     self:RequireSceneCfgHandler(sceneCfgStrDir,"Scene_1");
+    self:RequireSceneCfgHandler(sceneCfgStrDir,"Scene_2");
 end
 
 function Include:GlobalSystem()
@@ -80,12 +82,13 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"SpriteRenderSystem");
     self:RequireHandler(strCommonDir,"AnimationSystem");
     self:RequireHandler(strCommonDir,"GameChainSystem");
-    -- self:RequireHandler(strCommonDir,"UISystem");
-    -- self:RequireHandler(strCommonDir,"UserInterfaceSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
-    self:RequireHandler(strMysystemDir,"TheOridinaryWorld");
     self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem");
+
+    local strSceneDir = "scenes/";
+    self:RequireHandler(strSceneDir,"Scene1");
+    self:RequireHandler(strSceneDir,"Scene2");
 
 end
 

@@ -61,3 +61,35 @@
 
 -- 角度转弧度
 -- math.rad(360 * 15)
+
+-- Scene_1中创建UI
+-- { sUIType = "ShapeButton", sUseName = "btn_3", tbProperty = {
+--     sName = "黑色";
+--     x = 50; y = 170; w = 70; h = 50;
+--     style = {
+--         bBg = true;
+--         bBorder = true;  
+--         bgcolor = {0,0,0,1},
+--         txtcolor = {1,1,1,1},
+--         sborderFill = "line",
+--         sbgFill = "fill",
+--         bordercolor = {1,1,1,1},
+--         nFontSize = 182; bHoverColor = {0.5,0.5,1,1},
+--     }
+-- }},
+
+-- 动态创建UI
+-- local btn_1 = UIMgr:CreateUI("ShapeButton","btn_1",{
+--     sName = "黑色";
+--     x = 50; y = 170; w = 70; h = 50;
+--     style = {
+--         bBg = true;
+--         bBorder = true;  
+--         bgcolor = {0,0,0,1},
+--         txtcolor = {1,1,1,1},
+--         sborderFill = "line",
+--         sbgFill = "fill",
+--         bordercolor = {1,1,1,1},
+--         nFontSize = 182; bHoverColor = {0.5,0.5,1,1},
+--     }
+-- })

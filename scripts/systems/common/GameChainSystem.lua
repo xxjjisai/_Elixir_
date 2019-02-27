@@ -65,6 +65,9 @@ function GameChainSystem:Destory()
     self.tbChainList = {};
     self.iChain = nil;
     self.nCurIndex = 0;
-    self:DestoryHandler();
+    Tween:stopAll(); 
+    if self.DestoryHandler then 
+        self:DestoryHandler();
+    end 
 end
 

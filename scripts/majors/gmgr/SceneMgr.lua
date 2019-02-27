@@ -3,24 +3,27 @@ _G.SceneMgr = Class:DeriveClass("SceneMgr");
 SceneMgr.tbCurScene = nil;
 SceneMgr.nSceneID = 0;
 SceneMgr.bStart = false;
-SceneMgr.iPlayer = false;
+SceneMgr.iPlayer = nil;
 SceneMgr.tbSceneList = {};
 SceneMgr.nPlayerIndex = 1;
 
-function SceneMgr:Start()  
+function SceneMgr:Init()
     self.tbCurScene = nil;
-    self.nSceneID = 0;
     self.bStart = false;
-    self.iPlayer = false;
-    self.tbSceneList = {};
+    self.iPlayer = nil;
     self.nPlayerIndex = 1;
+end
+
+function SceneMgr:Start()  
+    self:Init();
     self.tbCurScene = Scene:DeriveClass("Scene");
-    table.insert(self.tbSceneList,self.tbCurScene);
     self.nSceneID = self.nSceneID + 1;
     self.tbCurScene.nSceneID = self.nSceneID;
+    self.tbSceneList[self.nSceneID] = self.tbCurScene;
     ContentMgr:ProduceHandler(self.tbCurScene,function ()
         self.iPlayer = self.tbCurScene:GetActorByTagType("Player");
         self:StartSystem();
+        self:StartUI();
         CameraMgr:Fade(0.1, 0, 0, 0, 1,function()
             self.bStart = true;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
             CameraMgr:Fade(3.5, 0, 0, 0, 0);
@@ -57,6 +60,15 @@ function SceneMgr:StartSystem()
     end
 end 
 
+function SceneMgr:StartUI()
+    local tbUIList = self.tbCurScene:GetAllUI()
+    for _,iUI in ipairs(tbUIList) do 
+        if iUI.Start then 
+            iUI:Start();
+        end
+    end
+end
+
 function SceneMgr:UpdateSystem(dt)
     local tbSystemList = self.tbCurScene:GetSystemList();
     for _,iSystem in ipairs(tbSystemList) do 
@@ -66,8 +78,17 @@ function SceneMgr:UpdateSystem(dt)
     end
 end
 
+function SceneMgr:UpdateUI(dt)
+    local tbUIList = self.tbCurScene:GetAllUI()
+    for _,iUI in ipairs(tbUIList) do 
+        if iUI.Update then 
+            iUI:Update(dt);
+        end
+    end
+end
+
 function SceneMgr:SetAppointScene(nSceneID,sOper)
-    if nSceneID == nil then 
+    if sOper ~= nil then 
         if sOper == "+" then 
             nSceneID = self:GetCurSceneID() + 1;
         elseif sOper == "-" then  
@@ -76,6 +97,7 @@ function SceneMgr:SetAppointScene(nSceneID,sOper)
     end 
     -- 如果是设计的场景，查看是否超过场景总数
     if nSceneID > Option.nMaxSceneCount then 
+        self:Trace(1," Max Scene Count !!!")
         return
     end
     self.bStart = false;
@@ -93,6 +115,7 @@ function SceneMgr:SetAppointScene(nSceneID,sOper)
         ContentMgr:ProduceHandler(self.tbCurScene,function ()
             self.iPlayer = self.tbCurScene:GetActorByTagType("Player");
             self:StartSystem();
+            self:StartUI();
             Option.sGameState = "GUODU"
             GuoDuMgr:Start(function ()
                 Option.sGameState = "PLAY";
@@ -109,13 +132,14 @@ end
 function SceneMgr:Update(dt)
     if not self.bStart then return end;
     self:UpdateSystem(dt);
+    self:UpdateUI(dt);
     if not self.iPlayer then return end; 
     CameraMgr:Follow(self.iPlayer);
 end 
 
 function SceneMgr:Render()
     if not self.bStart then return end;
-    local tbSystemList = self.tbCurScene:GetSystemList();
+    local tbSystemList = self.tbCurScene:GetSystemList();  
     local str_stats = "";
     if Option.bBackGroundStatic then 
         CameraMgr:RenderAttach(function () 
@@ -132,6 +156,13 @@ function SceneMgr:Render()
             if iSystem.Render then 
                 iSystem:Render();
             end
+        end
+    end
+
+    local tbUIList = self.tbCurScene:GetAllUI();
+    for _,iUI in ipairs(tbUIList) do 
+        if iUI.Render then 
+            iUI:Render(dt);
         end
     end
 
@@ -165,6 +196,12 @@ function SceneMgr:MouseDown(x, y, button, istouch, presses)
                 iSystem:MouseDown(x, y, button, istouch, presses);
             end
         end 
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.MouseDown then  
+                iUI:MouseDown(x, y, button, istouch, presses)  
+            end
+        end
     end
 end
 
@@ -174,6 +211,12 @@ function SceneMgr:MouseUp(x, y, button, istouch, presses)
         for _,iSystem in ipairs(tbSystemList) do 
             if iSystem.MouseUp then 
                 iSystem:MouseUp(x, y, button, istouch, presses);
+            end
+        end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.MouseUp then 
+                iUI:MouseUp(x, y, button, istouch, presses)  
             end
         end
     end
@@ -187,6 +230,12 @@ function SceneMgr:MouseMoved(x, y, dx, dy, istouch)
                 iSystem:MouseMoved(x, y, dx, dy, istouch);
             end
         end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.MouseMoved then 
+                iUI:MouseMoved(x, y, dx, dy, istouch)
+            end
+        end
     end
 end
 
@@ -198,7 +247,12 @@ function SceneMgr:KeyBoardDown(key, scancode, isrepeat)
                 iSystem:KeyBoardDown(key, scancode, isrepeat);
             end
         end
-
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.KeyBoardDown then 
+                iUI:KeyBoardDown(key, scancode, isrepeat) 
+            end
+        end
         if key == "space" then 
             self.nPlayerIndex = self.nPlayerIndex + 1;
             self.iPlayer,self.nPlayerIndex = self.tbCurScene:GetPlayer(self.nPlayerIndex)
@@ -211,7 +265,13 @@ function SceneMgr:KeyBoardUp(key, scancode)
         local tbSystemList = self.tbCurScene:GetSystemList();
         for _,iSystem in ipairs(tbSystemList) do 
             if iSystem.KeyBoardUp then 
-                iSystem:KeyBoardUp(key, scancode);
+                iSystem:KeyBoardUp(key, scancode)
+            end
+        end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.KeyBoardUp then 
+                iUI:KeyBoardUp(key, scancode)
             end
         end
     end
@@ -225,6 +285,12 @@ function SceneMgr:WheelMoved(x, y)
                 iSystem:WheelMoved(x, y);
             end
         end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.WheelMoved then 
+                iUI:WheelMoved(x, y)
+            end
+        end
     end
 end
 
@@ -234,6 +300,12 @@ function SceneMgr:TextInput(text)
         for _,iSystem in ipairs(tbSystemList) do 
             if iSystem.TextInput then 
                 iSystem:TextInput(text);
+            end
+        end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.TextInput then 
+                iUI:TextInput(text)
             end
         end
     end

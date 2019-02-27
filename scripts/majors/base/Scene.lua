@@ -113,3 +113,36 @@ function Scene:GetPlayer(nIndex)
     iActor = tbPlayerList[nIndex]
     return iActor,nIndex;
 end
+
+function Scene:AddUI(iUI)
+    table.insert(self.tbUIList,iUI)
+end 
+
+function Scene:GetAllUI()
+    return self.tbUIList;
+end
+
+function Scene:GetUI(sUseName)
+    for i,iUI in ipairs(self.tbUIList) do  
+        if iUI.sUseName == sUseName then 
+            return iUI;
+        end
+    end
+end
+
+function Scene:RemoveUI(sUseName)
+    local targetUIIndex = nil;
+    for i,iUI in ipairs(self.tbUIList) do 
+        if iUI.sUseName == sUseName then 
+            targetUIIndex = i;
+            break;
+        end
+    end
+    if targetUIIndex then 
+        table.remove(self.tbUIList,targetUIIndex);
+    end
+end
+
+function Scene:ClearUI()
+    self.tbUIList = {};
+end
