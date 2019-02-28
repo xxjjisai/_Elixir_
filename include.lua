@@ -8,19 +8,12 @@ function Include:RequireHandler(strDir,sPath)
     require(strDir..sPath);
 end
 
--- 加载场景配置文件专用
-function Include:RequireSceneCfgHandler(strDir,sPath)
-    self:Trace(1,"do file: [",strDir..sPath,"]");
-    require(strDir..sPath);
-    Option.nMaxSceneCount = Option.nMaxSceneCount + 1;
-end
-
 function Include:Import(pfn)
     self:GlobalConfig();
     self:ThirdPartyLibrary();
     self:GlobalManager();
     self:GlobalSystem();
-    self:GlobalModel();
+    self:GlobalModel(); 
     self:Trace(1," *** Do File Complete! *** ");
     pfn(0,nil);
 end
@@ -70,9 +63,6 @@ function Include:GlobalConfig()
     self:RequireHandler(gamesCfgStrDir,"GameTextCfg");
     self:RequireHandler(gamesCfgStrDir,"GameDataCfg");
 
-    local sceneCfgStrDir = strDir.."scenecfgs/";
-    self:RequireSceneCfgHandler(sceneCfgStrDir,"Scene_1");
-    self:RequireSceneCfgHandler(sceneCfgStrDir,"Scene_2");
 end
 
 function Include:GlobalSystem()
@@ -84,15 +74,19 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"GameChainSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
-    self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem");
-
-    local strSceneDir = "scenes/";
-    self:RequireHandler(strSceneDir,"Scene1");
-    self:RequireHandler(strSceneDir,"Scene2");
+    self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem"); 
 
 end
 
 function Include:GlobalModel()
     local strDir = "scripts/models/";
     self:RequireHandler(strDir,"PlayerModel");
+end
+
+function Include:SceneSystemAndCfg(nSceneID)
+    local strDir = string.format("scenes/scene%s/",tostring(nSceneID));
+    local strSysFileName = string.format("Scene%s",tostring(nSceneID));
+    local strCfgFileName = string.format("Scene_%s",tostring(nSceneID));
+    self:RequireHandler(strDir,strSysFileName);
+    self:RequireHandler(strDir,strCfgFileName);
 end

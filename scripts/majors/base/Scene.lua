@@ -86,6 +86,14 @@ function Scene:GetActorByClassName(sClassName)
     end 
 end
 
+function Scene:GetActorByUseName(sUseName)
+    for _,iActor in ipairs (self.tbActorList) do 
+        if iActor.sUseName == sUseName then 
+            return iActor;
+        end
+    end 
+end
+
 function Scene:UninstallActor()
     self.tbActorList = {};
     self.tbRenderList = {};

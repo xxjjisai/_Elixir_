@@ -7,6 +7,8 @@ function Actor:DeriveClass(sClassName)
     obj.tbiCompoList = {};      -- 组件列表
     obj.nUniqueID = 0;          -- 唯一识别
     obj.sTagType = "Actor";     -- 标签类型
+    obj.sUseName = "Actor";     -- 标签类型
+    obj.bVisible = true;        -- 是否可用
 	setmetatable(obj,{__index = self});
 	return obj;
 end 

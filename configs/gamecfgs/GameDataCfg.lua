@@ -1,8 +1,5 @@
-_G.GameDataCfg = {
-
-    tbGameInfo = {};
-
-    -- ui 相关
-    bShowToast = false; -- 是否已经在显示Toast提示
-
+_G.GameDataCfg = 
+{
+    tbGameInfo = {};   -- 完整游戏数据，初始化从本地存储中读取，若没有则初始化
+    nMaxSceneCount = 2; -- 最大场景数量
 }

@@ -18,16 +18,17 @@ function SceneMgr:Start()
     self:Init();
     self.tbCurScene = Scene:DeriveClass("Scene");
     self.nSceneID = self.nSceneID + 1;
+    Include:SceneSystemAndCfg(self.nSceneID);
     self.tbCurScene.nSceneID = self.nSceneID;
     self.tbSceneList[self.nSceneID] = self.tbCurScene;
     ContentMgr:ProduceHandler(self.tbCurScene,function ()
         self.iPlayer = self.tbCurScene:GetActorByTagType("Player");
         self:StartSystem();
         self:StartUI();
-        CameraMgr:Fade(0.1, 0, 0, 0, 1,function()
+        -- CameraMgr:Fade(0.1, 0, 0, 0, 1,function()
             self.bStart = true;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-            CameraMgr:Fade(3.5, 0, 0, 0, 0);
-        end)
+            -- CameraMgr:Fade(3.5, 0, 0, 0, 0);
+        -- end)
     end);
 end
 
@@ -104,11 +105,11 @@ function SceneMgr:SetAppointScene(nSceneID,sOper)
     self.tbCurScene = nil;
     self.tbCurScene = self:GetAppointScene(nSceneID);
     if self.tbCurScene == nil then 
-        Option.sGameState = "GUODU";
-        GuoDuMgr:Start(function ()
+        -- Option.sGameState = "GUODU";
+        -- GuoDuMgr:Start(function ()
             Option.sGameState = "PLAY";
             self:Start();
-        end);
+        -- end);
         return;
     end 
     ContentMgr:UninstallHandler(self.tbCurScene,function ()
@@ -116,11 +117,11 @@ function SceneMgr:SetAppointScene(nSceneID,sOper)
             self.iPlayer = self.tbCurScene:GetActorByTagType("Player");
             self:StartSystem();
             self:StartUI();
-            Option.sGameState = "GUODU"
-            GuoDuMgr:Start(function ()
+            -- Option.sGameState = "GUODU"
+            -- GuoDuMgr:Start(function ()
                 Option.sGameState = "PLAY";
                 self.bStart = true;
-            end);
+            -- end);
             -- CameraMgr:Fade(0.1, 0, 0, 0, 1,function()
             --     self.bStart = true;
             --     CameraMgr:Fade(1.5, 0, 0, 0, 0);

@@ -55,6 +55,7 @@ function AnimationSystem:Update(dt)
 		for _,iActor in ipairs(tbLayer) do 
 			repeat
 				if not self:GetRegisterCompo(iActor) then break end
+				if not iActor.bVisible then break end
 				local iCompoAnimate = iActor:GetiCompo("Animate");
 				if not iCompoAnimate.bRunning then 
 					break;
@@ -103,6 +104,7 @@ function AnimationSystem:Render()
 		for _,iActor in ipairs(tbLayer) do 
 			repeat
 				if not self:GetRegisterCompo(iActor) then break end
+				if not iActor.bVisible then break end
 				local iCompoAnimate = iActor:GetiCompo("Animate");
 				local iCompoTransform = iActor:GetiCompo("Transform");
 				local iCompoColor = iActor:GetiCompo("Color");

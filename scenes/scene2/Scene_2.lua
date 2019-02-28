@@ -3,7 +3,10 @@ _G.Scene_2 =
 {
     tbActor = 
     {
-        { sActorType = "Player"; },
+        { sActorType = "Player"; tbProperty = {
+            ["Color"] = { r = 1, g = 1, b = 0, a = 1 };
+            ["Sprite"] = { sImg = "hero_001" };
+        }},
     };
 
     tbUI = 
@@ -29,7 +32,7 @@ _G.Scene_2 =
         "RectangleRenderSystem",
         "LayerSortSystem",
         "SpriteRenderSystem",
-        "AnimationSystem",
+        -- "AnimationSystem",
         "KeyBoardMoveSystem",
         "Scene2",
     };

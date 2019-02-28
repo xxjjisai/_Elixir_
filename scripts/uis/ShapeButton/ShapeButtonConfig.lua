@@ -19,7 +19,7 @@ local ShapeButtonConfig =
         bordercolor = {1,1,1,1},
         bHoverColor = {0.5,0.5,1,1},
     };
-    sName = "按钮";
+    sText = "按钮";
     onClick = nil; -- 点击
     onHover = nil; -- 滑入
     bHover = false; -- 是否滑入

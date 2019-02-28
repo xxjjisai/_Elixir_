@@ -10,6 +10,7 @@ function RectangleRenderSystem:Render()
       for _,iActor in ipairs(tbLayer) do 
          repeat
             if not self:GetRegisterCompo(iActor) then break end
+            if not iActor.bVisible then break end
             local iCompoTransform = iActor:GetiCompo("Transform");
             local iCompoRectangle = iActor:GetiCompo("Rectangle");
             local iCompoColor = iActor:GetiCompo("Color");

@@ -56,9 +56,9 @@ function ShapeButton:Create(sClassName)
       love.graphics.setColor(txtcolor);
       local font = AssetsMgr:GetFont(self:GetAttr("style").nFontSize);
       love.graphics.setFont(font);
-      local nFontx = ((self:GetAttr("x") + self:GetAttr("w")*0.5) ) - font:getWidth(self:GetAttr("sName"))*0.5;
-      local nFonty = ((self:GetAttr("y") + self:GetAttr("h")*0.5) ) - font:getHeight(self:GetAttr("sName"))*0.5;
-      love.graphics.print(self:GetAttr("sName"),nFontx,nFonty)
+      local nFontx = ((self:GetAttr("x") + self:GetAttr("w")*0.5) ) - font:getWidth(self:GetAttr("sText"))*0.5;
+      local nFonty = ((self:GetAttr("y") + self:GetAttr("h")*0.5) ) - font:getHeight(self:GetAttr("sText"))*0.5;
+      love.graphics.print(self:GetAttr("sText"),nFontx,nFonty)
    end
 
    function obj:MouseDown(x,y,button,istouch, presses)

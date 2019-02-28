@@ -58,7 +58,7 @@ end
 function GameChainSystem:CreateChain(nExecuteTime,onExecute,onComplete)
     local sClassName = "Chain"..Origin:SetUniqueID();
     local iChain = Chain:DeriveClass(sClassName, nExecuteTime, onExecute, onComplete);
-    table.insert(self.tbChainList,iChain)
+    table.insert(self.tbChainList,iChain);
 end
 
 function GameChainSystem:Destory()

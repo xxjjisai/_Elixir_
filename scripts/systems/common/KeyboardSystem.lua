@@ -10,6 +10,7 @@ function KeyboardSystem:Update(dt)
 		for _,iActor in ipairs(tbLayer) do 
 			repeat
 				if not self:GetRegisterCompo(iActor) then break end
+				if not iActor.bVisible then break end
 				local iCompoKeyBoard = iActor:GetiCompo("KeyBoard");
                 if not iCompoKeyBoard.bActive then 
                     break; 
