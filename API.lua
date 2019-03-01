@@ -113,3 +113,9 @@
 --     iAnimateSys:ReSetFrame(player);
 --     iAnimateSys:Play(player);
 -- end)
+
+-- local r, c, h = http.request ({
+--     method = "POST",
+--     url = "http://127.0.0.1:5000/"
+-- })
+-- self:Trace(1,r,c,h)

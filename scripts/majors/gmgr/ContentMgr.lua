@@ -4,9 +4,8 @@ _G.ContentMgr = Class:DeriveClass("ContentMgr");
 function ContentMgr:ProduceHandler(iScene,fCallback)
     local cfg = _G["Scene_"..iScene.nSceneID];
     for _,tbActor in ipairs(cfg.tbActor) do 
-        local iActor = ActorMgr:CreateActor(tbActor.sActorType,tbActor.sUseName);
+        local iActor = ActorMgr:CreateActor(tbActor.sActorType,tbActor.sUseName,tbActor.tbProperty);
         iScene:AddActor(iActor);
-        iActor:ChangeiCompoParam(tbActor.tbProperty);
     end 
     if cfg.tbUI then 
         for _,tbUI in ipairs(cfg.tbUI) do 
@@ -15,7 +14,7 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
     end
     for _,sSystemName in ipairs(cfg.tbSystem) do 
         iScene:RegisterSystem(_G[sSystemName]);
-    end
+    end 
     if fCallback then fCallback(); end 
 end
 

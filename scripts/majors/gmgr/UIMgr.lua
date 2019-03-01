@@ -1,6 +1,6 @@
 _G.UIMgr = Class:DeriveClass("UIMgr");
 
-function UIMgr:CreateUI(sUIType,sUseName,tbAttribute)
+function UIMgr:CreateUI(sUIType,sUseName,tbProperty)
     local sUIPath = string.format("scripts/uis/%s/%s",sUIType,sUIType);
     local sUICfgPath = string.format("scripts/uis/%s/%sConfig",sUIType,sUIType);
     local sClassName = sUIType..Origin:SetUniqueID();
@@ -8,9 +8,9 @@ function UIMgr:CreateUI(sUIType,sUseName,tbAttribute)
     iUI.sTagType = sUIType;
     iUI.sUseName = sUseName or sClassName;
     local tbCfgUI = clone(require(sUICfgPath));
-    local tbAttribute = tbAttribute or {}
-    if next(tbAttribute) then 
-        for k,v in pairs(tbAttribute) do 
+    local tbProperty = tbProperty or {}
+    if next(tbProperty) then 
+        for k,v in pairs(tbProperty) do 
             tbCfgUI[k] = clone(v);
         end
     end

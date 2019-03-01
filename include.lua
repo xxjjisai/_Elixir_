@@ -30,8 +30,9 @@ function Include:ThirdPartyLibrary()
     Utils               = require(strDir.."Utils");
     Katsudo             = require(strDir.."katsudo");
     Tween               = require(strDir.."tween/tween");
-    nuklear             = require("nuklear");
-    -- socket              = require("socket");
+    -- nuklear             = require("nuklear");
+    socket              = require("socket");
+    http                = require("socket.http")
 end
 
 function Include:GlobalManager()
@@ -74,7 +75,7 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"GameChainSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
-    self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem"); 
+    -- self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem"); 
 
 end
 
