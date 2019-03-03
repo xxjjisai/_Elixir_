@@ -197,6 +197,9 @@ function SceneMgr:MouseDown(x, y, button, istouch, presses)
                 iSystem:MouseDown(x, y, button, istouch, presses);
             end
         end 
+
+        UIMgr:SetInputFocus(nil);
+
         local tbUIList = self.tbCurScene:GetAllUI()
         for _,iUI in ipairs(tbUIList) do 
             if iUI.MouseDown then  

@@ -3,9 +3,41 @@ _G.StorageMgr = Class:DeriveClass("StorageMgr");
 StorageMgr.tbRoleInfo = {};
 StorageMgr.bStartPush = false;
 
+StorageMgr.tbData = {};
+
 function StorageMgr:Init()
-    StorageMgr:Read()
+    StorageMgr:ReadHandler()
 end
+
+function StorageMgr:InitHandler()
+    self.tbData = {};
+    return self.tbData; 
+end
+
+function StorageMgr:ReadHandler()
+    local file = io.open('data.ext','rb');
+    if file == nil then 
+        return self:InitHandler();
+    end
+    file.close();
+    local blob = Blob(file:read('*all'))
+    self.tbData = blob:readTable(); 
+    return self.tbData
+end
+
+function StorageMgr:PushHandler(value,pfn)
+
+    table.insert(self.tbData, value)
+
+    local blob = Blob();
+    blob:writeTable(self.tbData);
+    local file = io.open('data.ext', 'wb')
+    file:write(blob:string());
+    file:close();
+    if pfn then pfn() end;
+end
+
+----------------------------------------------
 
 function StorageMgr:Read()
     local file = io.open('data.ext','rb');

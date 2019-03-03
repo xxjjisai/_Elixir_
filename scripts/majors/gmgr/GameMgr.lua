@@ -111,26 +111,26 @@ function GameMgr:KeyBoardDown(key, scancode, isrepeat)
         end
     end 
 
-    if key == "p" then   
-        Option.bPaused = not Option.bPaused; 
-        if Option.bPaused then 
-            PauseMgr.sOldGameState = Option.sGameState;
-            Option.sGameState = "PAUSE";
-        else 
-            Option.sGameState = PauseMgr.sOldGameState;
-        end 
-    end 
+    -- if key == "p" then   
+    --     Option.bPaused = not Option.bPaused; 
+    --     if Option.bPaused then 
+    --         PauseMgr.sOldGameState = Option.sGameState;
+    --         Option.sGameState = "PAUSE";
+    --     else 
+    --         Option.sGameState = PauseMgr.sOldGameState;
+    --     end 
+    -- end 
 
     if Option.sGameState == "PLAY" then 
         SceneMgr:KeyBoardDown(key, scancode, isrepeat) 
     end
 
-    if key == "1" then 
-        SceneMgr:SetAppointScene(1)
-    end
-    if key == "2" then 
-        SceneMgr:SetAppointScene(2)
-    end
+    -- if key == "1" then 
+    --     SceneMgr:SetAppointScene(1)
+    -- end
+    -- if key == "2" then 
+    --     SceneMgr:SetAppointScene(2)
+    -- end
 
 end
 

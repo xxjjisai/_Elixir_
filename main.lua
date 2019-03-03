@@ -92,9 +92,9 @@ function love.mousemoved(x, y, dx, dy, istouch)
 end
 
 function love.keypressed(key, scancode, isrepeat)
-    if key == "r" then 
-        love.event.quit("restart");
-    end 
+    -- if key == "r" then 
+    --     love.event.quit("restart");
+    -- end 
     if key == "escape" then 
         love.event.quit();
     end 

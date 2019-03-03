@@ -3,21 +3,26 @@ _G.Scene_1 =
 {
     tbActor = 
     {
-        { sActorType = "Player"; sUseName = "Player1",tbProperty={
-            ["Transform"] = { x=0, y=0, w=64, h=128, sx=1, sy=1, ox=0, oy=0, r=0 };
-        }},
+        { sActorType = "Player", sUseName = "Player1",tbProperty ={
+            ["Color"] = { a = 0 },
+        } },
     };
 
     tbUI = 
     { 
+        { sUIType = "ShapeTextInput", sUseName = "input_1",tbProperty = {
+            sText = "",
+            x = 150, y = 260, w = 570, h = 50;
+        }},
+
         { sUIType = "ShapeButton", sUseName = "btn_1",tbProperty = {
-            sText = "btn_1",
-            x = 100, y = 100, w = 70, h = 50;
+            sText = "确定",
+            x = 730, y = 260, w = 70, h = 50;
         }},
 
         { sUIType = "ShapeButton", sUseName = "btn_2",tbProperty = {
-            sText = "btn_2",
-            x = 180, y = 100, w = 70, h = 50;
+            sText = "返回",
+            x = 960-80, y = 20, w = 70, h = 50;
         }},
     },
 

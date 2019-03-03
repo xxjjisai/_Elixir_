@@ -1,5 +1,7 @@
 _G.UIMgr = Class:DeriveClass("UIMgr");
 
+UIMgr.sFocusName = nil;
+
 function UIMgr:CreateUI(sUIType,sUseName,tbProperty)
     local sUIPath = string.format("scripts/uis/%s/%s",sUIType,sUIType);
     local sUICfgPath = string.format("scripts/uis/%s/%sConfig",sUIType,sUIType);
@@ -25,4 +27,12 @@ end
 
 function UIMgr:RemoveUI(sUseName)
     SceneMgr:GetCurScene():RemoveUI(sUseName);
+end
+
+function UIMgr:SetInputFocus(sFocusName)
+    self.sFocusName = sFocusName;
+end
+
+function UIMgr:GetInputFocus()
+    return self.sFocusName;
 end
