@@ -17,7 +17,7 @@ local ShapeTextInputConfig =
         bordercolor = {1,1,1,1},
         bHoverColor = {0.9,0.9,0.9,1},
     };
-    sText = "input...";
+    sText = "";
     onClick = nil; -- 点击
     onHover = nil; -- 滑入
     bHover = false; -- 是否滑入

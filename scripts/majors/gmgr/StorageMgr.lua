@@ -22,16 +22,16 @@ function StorageMgr:ReadHandler()
     file.close();
     local blob = Blob(file:read('*all'))
     self.tbData = blob:readTable(); 
+    self:Trace(1,table.show(self.tbData,'self.tbData'));
     return self.tbData
 end
 
 function StorageMgr:PushHandler(value,pfn)
-
-    table.insert(self.tbData, value)
-
+    table.insert(self.tbData, value);
+    self:Trace(1,table.show(self.tbData,'self.tbData'));
     local blob = Blob();
     blob:writeTable(self.tbData);
-    local file = io.open('data.ext', 'wb')
+    local file = io.open('data.ext', 'wb');
     file:write(blob:string());
     file:close();
     if pfn then pfn() end;

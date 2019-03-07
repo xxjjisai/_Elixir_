@@ -74,6 +74,7 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"SpriteRenderSystem");
     self:RequireHandler(strCommonDir,"AnimationSystem");
     self:RequireHandler(strCommonDir,"GameChainSystem");
+    self:RequireHandler(strCommonDir,"UILayerSortSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
     -- self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem"); 
