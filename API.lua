@@ -171,3 +171,8 @@
 --     love.graphics.setFont(font);
 --     love.graphics.print(self.fileName,10,10)
 -- end 
+
+-- UI缓动效果
+-- UIMgr:GetUI("btn_1"):SetAttr("onClick", function ()
+--     Tween(2,UIMgr:GetUI("btn_1"):GetAttribute(),{ w = UIMgr:GetUI("btn_1"):GetAttr("w") + 200 },'inOutBack',function () end)
+-- end)

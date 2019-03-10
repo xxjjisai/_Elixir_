@@ -4,18 +4,18 @@ local ShapeTextInputConfig =
     bEnabled = true;
     x = 100;
     y = 100;
-    w = 70;
+    w = 100;
     h = 50;
     style = {
         bBg = true;
         bBorder = false;
-        sborderFill = "line",
-        sbgFill = "fill",
+        sborderFill = "line";
+        sbgFill = "fill";
         nFontSize = 182;
-        bgcolor = {1,1,1,1},
-        txtcolor = {0,0,0,1},
-        bordercolor = {1,1,1,1},
-        bHoverColor = {0.9,0.9,0.9,1},
+        bgcolor = {1,1,1,1};
+        txtcolor = {0,0,0,1};
+        bordercolor = {1,1,1,1};
+        bHoverColor = {0.9,0.9,0.9,1};
     };
     sText = "";
     onClick = nil; -- 点击
@@ -23,7 +23,7 @@ local ShapeTextInputConfig =
     bHover = false; -- 是否滑入
     bHoverMove = false; -- 是否滑入移动
     bShowHover = true; 
-    bNumber = true; -- 是否限制只输入数字 
+    bNumber = false; -- 是否限制只输入数字 
     nLayerIndex = 1; -- 渲染层级
 }
 return ShapeTextInputConfig

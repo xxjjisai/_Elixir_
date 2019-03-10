@@ -27,3 +27,11 @@ end
 function UI:GetAttr(key)
     return self.tbAttributeList[key];
 end
+
+function UI:GetStyle()
+    return self.tbAttributeList["style"];
+end
+
+function UI:SetStyle(key,value)
+    self.tbAttributeList["style"][key] = value;
+end

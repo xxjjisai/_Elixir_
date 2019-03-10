@@ -3,34 +3,24 @@ _G.Scene_1 =
 {
     tbActor = 
     {
-        { sActorType = "Player", sUseName = "Player1",tbProperty ={
-            ["Color"] = { a = 0 },
-        } },
+        { sActorType = "Player", sUseName = "Player1",tbProperty = {
+            ["Transform"] = { x=100, y=0, w=64, h=128, sx=1, sy=1, ox=0, oy=0, r=0 };
+        }},
+        
+        { sActorType = "Player", sUseName = "Player2",tbProperty = {
+            ["Transform"] = { x=100, y=100, w=64, h=128, sx=1, sy=1, ox=0, oy=0, r=0 };
+            ["Color"] = { r = 1, g = 0, b = 0, a = 1 };
+        }},
     };
 
     tbUI = 
     { 
-        
-        { sUIType = "ShapeTextInput", sUseName = "input_X",tbProperty = {
-            sText = "0",
-            bNumber = true,
-            x = 50, y = 100, w = 80, h = 50;
+        { sUIType = "ShapeButton", sUseName = "btn_1", tbProperty = {
+            sText = "你好",x = 200, y = 100; w = 300;
         }},
 
-        { sUIType = "ShapeTextInput", sUseName = "input_Y",tbProperty = {
-            sText = "0",
-            bNumber = true,
-            x = 50, y = 200, w = 80, h = 50;
-        }},
-        
-        { sUIType = "ShapeButton", sUseName = "btn_1",tbProperty = {
-            sText = "X",
-            x = 130, y = 100, w = 70, h = 50;
-        }},
-        
-        { sUIType = "ShapeButton", sUseName = "btn_2",tbProperty = {
-            sText = "Y",
-            x = 130, y = 200, w = 70, h = 50;
+        { sUIType = "ShapeTextInput", sUseName = "input_1", tbProperty = {
+            sText = "你好",x = 100, y = 100;
         }},
     },
 
@@ -38,7 +28,6 @@ _G.Scene_1 =
     {
         "RectangleRenderSystem",
         "LayerSortSystem",
-        "UILayerSortSystem",
         "SpriteRenderSystem",
         "AnimationSystem",
         "Scene1",

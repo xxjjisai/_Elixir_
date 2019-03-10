@@ -5,7 +5,7 @@ local PlayerConfig =
     ["RenderLayer"] = { nLayerIndex = RenderLayerType.nPlayer };
     ["Speed"] = { nSpeed = 200}; 
     ["KeyBoard"] = { bActive = true }; 
-    -- ["Rectangle"] = { sFillType = "fill"}; 
+    ["Rectangle"] = { sFillType = "fill"}; 
     -- ["Sprite"] = { sImg = "hero_001" };
     -- ["Animate"] = { sImg = "ball", nQuadW = 32, nQuadH = 32, nTotalFrame= 5, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.07 };
     -- ["Animate"] = { sImg = "tc", nQuadW = 30, nQuadH = 55, nTotalFrame= 18, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.07 };
