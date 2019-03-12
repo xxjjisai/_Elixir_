@@ -2,6 +2,11 @@ local ShapeTextInput = {};
 function ShapeTextInput:Create(sClassName)
    local obj = UI:DeriveClass(sClassName);
    obj.sText = "";
+   obj.tbShine = {
+      sText = "|";
+      tbColor = { r = 0, g = 0, b = 0, a = 1 };
+   };
+   -- obj.nLastTime = 0;
 
    function obj:Start()
       self:OpenRepeat(true);
@@ -35,6 +40,15 @@ function ShapeTextInput:Create(sClassName)
          self:SetAttr("bHover",false); 
          self:SetAttr("bHoverMove",false);
       end 
+
+      -- local nNow = GetTime();
+      -- if nNow - self.nLastTime >= 1 then 
+      --    self.tbShine.tbColor.a = 0;
+      --    self.nLastTime = nNow;
+      --    return
+      -- end
+      -- self.tbShine.tbColor.a = 1;
+      
    end
 
    function obj:Render()
@@ -63,13 +77,15 @@ function ShapeTextInput:Create(sClassName)
       love.graphics.setColor(txtcolor);
       local font = AssetsMgr:GetFont(self:GetAttr("style").nFontSize);
       love.graphics.setFont(font);
-      local nFontx = ((self:GetAttr("x") + self:GetAttr("w")*0.5) ) - font:getWidth(self:GetAttr("sText"))*0.5;
-      local nFonty = ((self:GetAttr("y") + self:GetAttr("h")*0.5) ) - font:getHeight(self:GetAttr("sText"))*0.5;
-      love.graphics.print(self:GetAttr("sText"),nFontx,nFonty)
+      local nFontx = ( (self:GetAttr("x") + self:GetAttr("w")*0.5) ) - font:getWidth(self:GetAttr("sText"))*0.5;
+      local nFonty = ( (self:GetAttr("y") + self:GetAttr("h")*0.5) ) - font:getHeight(self:GetAttr("sText"))*0.5;
+      love.graphics.print(self:GetAttr("sText"),nFontx,nFonty);
+      local r,g,b,a = self.tbShine.tbColor.r,self.tbShine.tbColor.g,self.tbShine.tbColor.b,self.tbShine.tbColor.a
+      love.graphics.setColor(r,g,b,a);
+      love.graphics.print(self.tbShine.sText,nFontx + font:getWidth(self:GetAttr("sText"))+3,nFonty-2);
    end 
 
    function obj:TextInput(text)
-
       if self:GetAttr("bNumber") then
          text = tonumber(text);
          if not text then return end
