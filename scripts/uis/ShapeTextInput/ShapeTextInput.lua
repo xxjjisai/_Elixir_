@@ -82,7 +82,7 @@ function ShapeTextInput:Create(sClassName)
       love.graphics.print(self:GetAttr("sText"),nFontx,nFonty);
       local r,g,b,a = self.tbShine.tbColor.r,self.tbShine.tbColor.g,self.tbShine.tbColor.b,self.tbShine.tbColor.a
       love.graphics.setColor(r,g,b,a);
-      love.graphics.print(self.tbShine.sText,nFontx + font:getWidth(self:GetAttr("sText"))+3,nFonty-2);
+      -- love.graphics.print(self.tbShine.sText,nFontx + font:getWidth(self:GetAttr("sText"))+3,nFonty-2);
    end 
 
    function obj:TextInput(text)

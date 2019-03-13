@@ -80,7 +80,7 @@ function SceneMgr:UpdateSystem(dt)
 end
 
 function SceneMgr:UpdateUI(dt)
-    local tbUIList = self.tbCurScene:GetAllUI()
+    local tbUIList = self.tbCurScene:GetAllUI();
     for _,iUI in ipairs(tbUIList) do 
         if iUI.Update then 
             iUI:Update(dt);
@@ -98,7 +98,7 @@ function SceneMgr:SetAppointScene(nSceneID,sOper)
     end 
     -- 如果是设计的场景，查看是否超过场景总数
     if nSceneID > Option.nMaxSceneCount then 
-        self:Trace(1," Max Scene Count !!!")
+        self:Trace(1," Max Scene Count !!!");
         return
     end
     self.bStart = false;

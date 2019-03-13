@@ -4,7 +4,7 @@ _G.Scene_1 =
     tbActor = 
     {
         { sActorType = "Player", sUseName = "Player1",tbProperty = {
-            ["Color"] = { a=0 };
+            ["Color"] = { a=1 };
         }},
     };
 
