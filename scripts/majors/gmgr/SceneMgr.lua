@@ -193,7 +193,7 @@ function SceneMgr:MouseDown(x, y, button, istouch, presses)
     if self.bStart then 
         local tbSystemList = self.tbCurScene:GetSystemList();
         for _,iSystem in ipairs(tbSystemList) do 
-            if iSystem.MouseDown then 
+            if iSystem.MouseDown then
                 iSystem:MouseDown(x, y, button, istouch, presses);
             end
         end 

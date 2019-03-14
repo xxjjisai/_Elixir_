@@ -3,9 +3,7 @@ _G.Scene_1 =
 {
     tbActor = 
     {
-        { sActorType = "Player", sUseName = "Player1",tbProperty = {
-            ["Color"] = { a=1 };
-        }},
+        { sActorType = "Player", sUseName = "Player1" },
     };
 
     tbUI = 

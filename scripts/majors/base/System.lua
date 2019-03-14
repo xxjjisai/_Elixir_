@@ -42,8 +42,7 @@ function System:GetRegisterUI(iUI)
     return false;
 end
 
-function System:Destory()
-    self.tbRegisterCompoList = {};
+function System:Destory() 
     self.tbListenerList = {};
     self.tbRegisterUI = {};
 end

@@ -8,13 +8,13 @@ local ShapeTextInputConfig =
     h = 50;
     style = {
         bBg = true;
-        bBorder = false;
+        bBorder = true;
         sborderFill = "line";
         sbgFill = "fill";
         nFontSize = 182;
         bgcolor = {1,1,1,1};
         txtcolor = {0,0,0,1};
-        bordercolor = {1,1,1,1};
+        bordercolor = {0,0,0,1};
         bHoverColor = {0.9,0.9,0.9,1};
     };
     sText = "";
