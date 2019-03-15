@@ -5,26 +5,14 @@ import sys
 import json
 
 app = Flask(__name__)
-
-nCount = 1
+ 
+tbData = {}
 
 @app.route('/',methods=['GET','POST'])
-def hello_world():
-
-    global nCount
-
-    nCount = nCount + 1
-
-    # test = { 'key1':'123','key2':'456'}
-
-    rsp = make_response('hello4') #这个方法生成了一个response对象
-    rsp.mimetype = 'text/plain'
-    rsp.headers['nCount'] = nCount
-    rsp.set_cookie('user','wang')#这个值可以用接下来访问的request.cookies来取得 
-
-
-    # return json.dumps(test)
-    return rsp
+def hello_world(): 
+    global tbData
+    tbData = { 'key1':'value1','key2':'value2','key3':'value3' } 
+    return json.dumps(tbData)
 
 if __name__ == '__main__':
     app.run(debug=True)

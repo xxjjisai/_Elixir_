@@ -1,9 +1,10 @@
-_G.Scene1 = GameChainSystem:DeriveClass("Scene1");
+_G.Scene3 = GameChainSystem:DeriveClass("Scene3");
 
-function Scene1:StartHandler() 
+function Scene3:StartHandler() 
     local iScene = self:GetCurScene();
-    local iPlayer = iScene:GetPlayer(1);
-    SceneMgr:SetAppointScene(3);
+    local iPlayer = iScene:GetPlayer(1); 
+
+    -- SceneMgr:SetAppointScene(2);
     -- iPlayer:GetiCompo("Color").a = 0;
     
     -- UIMgr:GetUI("btn_1"):SetAttr("onClick",function () 

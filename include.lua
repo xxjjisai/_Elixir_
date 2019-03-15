@@ -23,6 +23,7 @@ function Include:ThirdPartyLibrary()
     loader      	    = require(strDir..'love-loader');
     bump_debug      	= require(strDir..'bump_debug'); 
     bump      	        = require(strDir..'bump'); 
+    json      	        = require(strDir..'json'); 
     splash      	    = require(strDir..'lovesplash');
     Timer               = require(strDir.."Timer")();
     Camera              = require(strDir.."Camera")();
