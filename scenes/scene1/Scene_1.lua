@@ -12,6 +12,7 @@ _G.Scene_1 =
     { 
         { sUIType = "ShapeTextInput", sUseName = "input_1",tbProperty = {
             sText = "",
+            bNumber = true,
             x = 150, y = 260, w = 570, h = 50;
         }},
 

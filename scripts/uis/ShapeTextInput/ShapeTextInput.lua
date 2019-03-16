@@ -69,6 +69,12 @@ function ShapeTextInput:Create(sClassName)
    end 
 
    function obj:TextInput(text)
+
+      if self:GetAttr("bNumber") then 
+         text = tonumber(text);
+         if not text then return end
+      end
+
       if UIMgr:GetInputFocus() ~= self.sClassName then 
          return 
       end
