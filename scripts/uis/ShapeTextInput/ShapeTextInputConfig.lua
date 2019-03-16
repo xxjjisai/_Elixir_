@@ -23,6 +23,6 @@ local ShapeTextInputConfig =
     bHover = false; -- 是否滑入
     bHoverMove = false; -- 是否滑入移动
     bShowHover = true; 
-    bNumber = true; -- 是否限制只输入数字
+    bNumber = true; -- 是否限制只输入数字 
 }
 return ShapeTextInputConfig

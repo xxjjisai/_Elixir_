@@ -22,9 +22,9 @@ function Scene1:StartHandler()
 
 end
 
--- function Scene1:Render() 
---     love.graphics.setColor(1,1,1,1)
---     local font = AssetsMgr:GetFont(202);
---     love.graphics.setFont(font);
---     love.graphics.print(self.fileName,10,10)
--- end 
+function Scene1:Render() 
+    love.graphics.setColor(1,1,1,1)
+    local font = AssetsMgr:GetFont(202);
+    love.graphics.setFont(font);
+    love.graphics.print(self.fileName,10,10)
+end 

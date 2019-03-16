@@ -70,7 +70,7 @@ function ShapeTextInput:Create(sClassName)
 
    function obj:TextInput(text)
 
-      if self:GetAttr("bNumber") then 
+      if self:GetAttr("bNumber") then
          text = tonumber(text);
          if not text then return end
       end
