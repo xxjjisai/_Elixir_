@@ -12,5 +12,6 @@ local ShapeGridConfig =
     nItemRow = 1;
     nItemLength = 0;
     gridItemSize = 0;
+    nLayerIndex = 1; -- 渲染层级
 }
 return ShapeGridConfig

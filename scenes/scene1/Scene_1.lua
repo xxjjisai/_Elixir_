@@ -13,16 +13,19 @@ _G.Scene_1 =
         { sUIType = "ShapeTextInput", sUseName = "input_1",tbProperty = {
             sText = "",
             bNumber = true,
+            nLayerIndex = 1,
             x = 150, y = 260, w = 570, h = 50;
         }},
-
+        
         { sUIType = "ShapeButton", sUseName = "btn_1",tbProperty = {
             sText = "确定",
+            nLayerIndex = 1,
             x = 730, y = 260, w = 70, h = 50;
         }},
-
+        
         { sUIType = "ShapeButton", sUseName = "btn_2",tbProperty = {
             sText = "返回",
+            nLayerIndex = 1,
             x = 960-80, y = 20, w = 70, h = 50;
         }},
     },

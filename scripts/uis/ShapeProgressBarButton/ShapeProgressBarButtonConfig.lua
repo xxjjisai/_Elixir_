@@ -28,5 +28,6 @@ local ShapeProgressBarButtonConfig =
         nFontSize = 182;
         bHoverColor = {0.5,0.5,1,1},
     };
+    nLayerIndex = 1; -- 渲染层级
 }
 return ShapeProgressBarButtonConfig

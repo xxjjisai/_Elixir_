@@ -25,5 +25,6 @@ local ShapeButtonConfig =
     bHover = false; -- 是否滑入
     bHoverMove = false; -- 是否滑入移动
     bShowHover = true; 
+    nLayerIndex = 1; -- 渲染层级
 }
 return ShapeButtonConfig

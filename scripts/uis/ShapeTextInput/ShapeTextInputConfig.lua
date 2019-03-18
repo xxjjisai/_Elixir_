@@ -24,5 +24,6 @@ local ShapeTextInputConfig =
     bHoverMove = false; -- 是否滑入移动
     bShowHover = true; 
     bNumber = true; -- 是否限制只输入数字 
+    nLayerIndex = 1; -- 渲染层级
 }
 return ShapeTextInputConfig
