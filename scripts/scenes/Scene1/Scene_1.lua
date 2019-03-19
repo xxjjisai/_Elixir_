@@ -12,6 +12,7 @@ _G.Scene_1 =
 
     tbSystem = 
     {
+        "RectangleRenderSystem",
         'Scene1',
     };
 }
