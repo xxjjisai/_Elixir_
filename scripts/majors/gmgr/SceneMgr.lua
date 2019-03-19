@@ -314,3 +314,20 @@ function SceneMgr:TextInput(text)
         end
     end
 end
+
+function SceneMgr:Filedropped(file)
+    if self.bStart then 
+        local tbSystemList = self.tbCurScene:GetSystemList();
+        for _,iSystem in ipairs(tbSystemList) do 
+            if iSystem.Filedropped then 
+                iSystem:Filedropped(file);
+            end
+        end
+        local tbUIList = self.tbCurScene:GetAllUI()
+        for _,iUI in ipairs(tbUIList) do 
+            if iUI.Filedropped then 
+                iUI:Filedropped(file)
+            end
+        end
+    end
+end

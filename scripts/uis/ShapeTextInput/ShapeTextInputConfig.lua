@@ -20,9 +20,11 @@ local ShapeTextInputConfig =
     sText = "";
     onClick = nil; -- 点击
     onHover = nil; -- 滑入
+    onFiledropped = nil; -- 文件拖入窗口
     bHover = false; -- 是否滑入
     bHoverMove = false; -- 是否滑入移动
     bShowHover = true; 
+    bFiledropped = false; -- 是否允许文件拖入窗口读取 
     bNumber = false; -- 是否限制只输入数字 
     nLayerIndex = 1; -- 渲染层级
 }

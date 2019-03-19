@@ -177,6 +177,12 @@ function GameMgr:TextInput(text)
     end
 end
 
+function GameMgr:Filedropped(file)
+    if Option.sGameState == "PLAY" then 
+        SceneMgr:Filedropped(file)
+    end
+end
+
 function GameMgr:QuitGame()
 
 end

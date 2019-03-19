@@ -121,6 +121,23 @@ function love.textinput(text)
     end
 end
 
+function love.filedropped(file)
+    if Option.bDoFileComplete == true then
+        GameMgr:Filedropped(file); 
+    end
+
+    -- local data = file:read()
+    -- print("Content of " .. file:getFilename() .. ' is')
+    -- print(data)
+    -- print("End of file")
+
+    -- local oldStr = "bye"
+    -- local newStr = "kkk"
+    -- content = data
+    -- content, count = string.gsub(content, oldStr, newStr)
+    -- print("content",content)
+end
+
 -- 关闭游戏
 function love.quit()
 	if Option.bExit then

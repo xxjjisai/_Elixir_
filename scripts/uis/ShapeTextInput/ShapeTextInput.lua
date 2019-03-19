@@ -116,6 +116,23 @@ function ShapeTextInput:Create(sClassName)
             self:SetAttr("sText",text);
          end
       end
+
+      local osString = love.system.getOS() 
+      local control 
+      if osString == "OS X" then
+        control = love.keyboard.isDown("lgui","rgui")
+      elseif osString == "Windows" or osString == "Linux" then
+        control = love.keyboard.isDown("lctrl","rctrl")
+      end 
+      if control then
+        if key == "c" then
+          if self:GetAttr("sText") then love.system.setClipboardText(self:GetAttr("sText")) end
+        end
+        if key == "v" then
+         self:SetAttr("sText",love.system.getClipboardText());
+        end
+      end
+
   end
 
   function obj:MouseDown(x,y,button,istouch, presses)
@@ -145,6 +162,27 @@ function ShapeTextInput:Create(sClassName)
             return
          end
       end 
+   end
+
+   function obj:Filedropped(file)
+      -- local data = file:read()
+      -- print("Content of " .. file:getFilename() .. ' is')
+      -- print(data)
+      -- print("End of file")
+
+      -- local oldStr = "bye"
+      -- local newStr = "kkk"
+      -- content = data
+      -- content, count = string.gsub(content, oldStr, newStr)
+      -- print("content",content)
+      if not self:GetAttr("bFiledropped") then 
+         return 
+      end 
+      if self:GetAttr("onFiledropped") then 
+         self:GetAttr("onFiledropped")(file);
+         return
+      end
+
    end
 
    return obj;
