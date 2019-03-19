@@ -1,0 +1,1 @@
+pyinstaller -F D:\Cosmos\GameDEV\Love2d\_Elixir_\tools\eli.py

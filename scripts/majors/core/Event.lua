@@ -2,11 +2,11 @@
 _G.Event = {}; 
 
 function Event:AddEvent(tbDistributor,tbListener)
-    tbDistributor.tbListenerList[tbListener.nUniqueID] = tbListener;
+    tbDistributor.tbListenerList[tbListener.sClassName] = tbListener;
 end 
 
 function Event:RemoveEvent(tbListener,tbDistributor)
-    tbDistributor.tbListenerList[tbListener.nUniqueID] = nil;
+    tbDistributor.tbListenerList[tbListener.sClassName] = nil;
 end  
 
 function Event:DoEvent(tbDistributor,sFuncName,...)
@@ -22,6 +22,6 @@ function Event:DoEvent(tbDistributor,sFuncName,...)
     end 
 end 
 
-function Event:QueryEvent(tbDistributor,nUniqueID) 
-    return tbDistributor.tbListenerList[nUniqueID] ~= nil ;
+function Event:QueryEvent(tbDistributor,sClassName) 
+    return tbDistributor.tbListenerList[sClassName] ~= nil ;
 end 

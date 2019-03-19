@@ -88,7 +88,6 @@ function ShapeButton:Create(sClassName)
          end
       end 
    end
-
    return obj;
 end
 return ShapeButton;

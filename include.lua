@@ -64,7 +64,6 @@ function Include:GlobalConfig()
     local gamesCfgStrDir = strDir.."gamecfgs/";
     self:RequireHandler(gamesCfgStrDir,"GameTypeCfg");
     self:RequireHandler(gamesCfgStrDir,"GameTextCfg");
-    self:RequireHandler(gamesCfgStrDir,"GameDataCfg");
 
 end
 
@@ -88,7 +87,7 @@ function Include:GlobalModel()
 end
 
 function Include:SceneSystemAndCfg(nSceneID)
-    local strDir = string.format("scenes/scene%s/",tostring(nSceneID));
+    local strDir = string.format("scripts/scenes/scene%s/",tostring(nSceneID));
     local strSysFileName = string.format("Scene%s",tostring(nSceneID));
     local strCfgFileName = string.format("Scene_%s",tostring(nSceneID));
     self:RequireHandler(strDir,strSysFileName);

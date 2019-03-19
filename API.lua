@@ -176,3 +176,9 @@
 -- UIMgr:GetUI("btn_1"):SetAttr("onClick", function ()
 --     Tween(2,UIMgr:GetUI("btn_1"):GetAttribute(),{ w = UIMgr:GetUI("btn_1"):GetAttr("w") + 200 },'inOutBack',function () end)
 -- end)
+
+-- 如何新增一个场景（从1开始，不能配0，以下的0仅为示例）
+-- 1.新建场景目录 Scene0
+-- 2.新建场景配置文件 Scene_0.lua 和场景系统文件 Scene0.lua 
+-- 3.修改  GameDataCfg.lua 中 nMaxSceneCount 为 0
+-- 4.Scene_0.lua 中 tbSystem 新增字段 "Scene0"

@@ -51,18 +51,18 @@ function Class:Trace(nType,...)
 	end
 end
 
-function Class:Error(nCode,...)
+function Class:Error(...)
 	local args = {...};
 	local str = "["..self.sClassName.."=>"..os.date("%c").."] ";
 	for i,v in ipairs(args) do 
 		str = str..v.." ";
 	end
-	error(str.."nErrorCode:"..nCode);
+	error(str);
 	
 	if Option.bLog then 
 		local file = io.open('gc.log', 'a')
 		if file ~= nil then 
-			file:write(str.."nErrorCode:"..nCode.."\n");
+			file:write(str.."\n");
 			file:close();
 		end
 	end

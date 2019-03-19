@@ -9,7 +9,19 @@ function GameMgr:StartUp()
     Camera:setFollowStyle(Camera_Follow_Style);
     StorageMgr:Init();
     StorageMgr:InitInfo();
-    Option.nMaxSceneCount = GameDataCfg.nMaxSceneCount;
+    local file = io.open('configs/gamecfgs/GameDataCfg.json', 'r')
+    if not file then 
+        self:Error("not find GameDataCfg.json")
+        return
+    end 
+    local szContent = ""
+    for line in file:lines() do
+        szContent = szContent..line;
+    end
+    file:close();
+    _G.GameDataCfg = json.decode(szContent).GameDataCfg;
+    self:Trace(1,table.show(GameDataCfg,"GameDataCfg"))
+    Option.nMaxSceneCount = tonumber(GameDataCfg.nMaxSceneCount);
     AssetsMgr:Start("Currency",function()
         Option.sGameState = "MENU";
         MenuMgr:Start(0.5,function ()
@@ -130,6 +142,18 @@ function GameMgr:KeyBoardDown(key, scancode, isrepeat)
     end
     if key == "f2" then 
         SceneMgr:SetAppointScene(2)
+    end
+    if key == "f3" then 
+        SceneMgr:SetAppointScene(3)
+    end
+    if key == "f4" then 
+        SceneMgr:SetAppointScene(4)
+    end
+    if key == "f5" then 
+        SceneMgr:SetAppointScene(5)
+    end
+    if key == "f6" then 
+        SceneMgr:SetAppointScene(6)
     end
 
 end
