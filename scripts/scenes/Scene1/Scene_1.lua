@@ -9,13 +9,10 @@ _G.Scene_1 =
     { 
         { sUIType = 'ShapeButton', sUseName = 'btn_1' },
         { sUIType = 'ShapeTextInput', sUseName = 'input_1' },
-        { sUIType = 'ShapeTextInput', sUseName = 'input_2' },
-        { sUIType = 'ShapeTextInput', sUseName = 'input_3' },
     },
 
     tbSystem = 
     {
-        "RectangleRenderSystem",
         'Scene1',
     };
 }

@@ -122,7 +122,6 @@ function ShapeTextInput:Create(sClassName)
          end
       end
 
-      self:Trace(1,self:GetAttr("sText"))
       local osString = love.system.getOS() 
       local control 
       if osString == "OS X" then

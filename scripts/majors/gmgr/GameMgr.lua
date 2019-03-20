@@ -20,7 +20,6 @@ function GameMgr:StartUp()
     end
     file:close();
     _G.GameDataCfg = json.decode(szContent).GameDataCfg;
-    self:Trace(1,table.show(GameDataCfg,"GameDataCfg"))
     Option.nMaxSceneCount = tonumber(GameDataCfg.nMaxSceneCount);
     AssetsMgr:Start("Currency",function()
         Option.sGameState = "MENU";

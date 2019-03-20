@@ -72,6 +72,7 @@ def CreateScene(nSceneID):
         "    tbUI = \n"
         "    { \n"
         "        -- { sUIType = 'ShapeButton', sUseName = 'btn_1' },\n"
+        "        -- { sUIType = 'ShapeTextInput', sUseName = 'input_1' },\n"
         "    },\n"
         "\n"
         "    tbSystem = \n"
@@ -239,8 +240,25 @@ if __name__=="__main__":
     # eli q scene -a : 查询当前场景总数
     # eli q scene -b : 查询当前场景名称
 
+    str = '''
+        eli scene -c 5 ：创建ID为5的场景
+        eli scene -d 5 : 删除ID为5的场景
+        eli actor -c Actor ：创建名称为Actor的角色
+        eli actor -d Actor : 删除名称为Actor的角色
+        eli q scene -a : 查询场景总数
+        eli q scene -b : 查询场景名称
+        eli q actor -a : 查询角色总数
+        eli q actor -b : 查询角色名称
+        '''
+        
+
     # cmdName = sys.argv[0]
     cmdName = sys.argv[1]
+    # if not cmdName:
+    #     print("请输入正确的命令，比如：");
+    #     print(str)
+    #     return 
+
     if cmdName == "scene" :
         sOper = sys.argv[2]
         if sOper == "-c": # create
@@ -253,17 +271,7 @@ if __name__=="__main__":
             print("请输入正确的命令！")
             pass
     elif cmdName == "help" :
-        str = '''
-        eli scene -c 5 ：创建ID为5的场景
-        eli scene -d 5 : 删除ID为5的场景
-        eli actor -c Actor ：创建名称为Actor的角色
-        eli actor -d Actor : 删除名称为Actor的角色
-        eli q scene -a : 查询场景总数
-        eli q scene -b : 查询场景名称
-        eli q actor -a : 查询角色总数
-        eli q actor -b : 查询角色名称
-        '''
-        print(str)
+        print(str) 
     elif cmdName == "actor" :
         sOper = sys.argv[2]
         if sOper == "-c": # create
