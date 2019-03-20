@@ -21,6 +21,24 @@ def QuerySceneName():
             tbSceneName.append(name)
     return tbSceneName
 
+#查询角色总数
+def QueryActorCount():
+    nCount = 0
+    sDir = "scripts/actors"
+    for _, dirs, _ in os.walk(sDir, topdown=False):
+        for _ in dirs:
+            nCount += 1
+    return nCount
+
+#查询角色名称
+def QueryActorName():
+    tbActorName = []
+    sDir = "scripts/actors"
+    for _, dirs, _ in os.walk(sDir, topdown=False):
+        for name in dirs:
+            tbActorName.append(name)
+    return tbActorName
+
 #创建场景
 def CreateScene(nSceneID):
     # print(nSceneID)
@@ -242,6 +260,8 @@ if __name__=="__main__":
         eli actor -d Actor : 删除名称为Actor的角色
         eli q scene -a : 查询场景总数
         eli q scene -b : 查询场景名称
+        eli q actor -a : 查询角色总数
+        eli q actor -b : 查询角色名称
         '''
         print(str)
     elif cmdName == "actor" :
@@ -270,6 +290,13 @@ if __name__=="__main__":
             elif sys.argv[3] == "-b": #查询场景名称
                 tbSceneName = QuerySceneName()
                 print(f"场景名称列表：{tbSceneName}")
+        if sys.argv[2] == "actor":
+            if sys.argv[3] == "-a": #查询Actor数量
+                nSceneCount = QueryActorCount()
+                print(f"Actor数量：{nSceneCount}")
+            elif sys.argv[3] == "-b": #查询Actor名称
+                tbSceneName = QueryActorName()
+                print(f"Actor名称列表：{tbSceneName}")
         pass
     else:
         pass

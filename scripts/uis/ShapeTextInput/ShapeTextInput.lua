@@ -106,6 +106,11 @@ function ShapeTextInput:Create(sClassName)
    end
 
    function obj:KeyBoardDown(key, scancode, isrepeat)
+
+      if UIMgr:GetInputFocus() ~= self.sClassName then 
+         return 
+      end
+
       if key == "backspace" then
          if UIMgr:GetInputFocus() ~= self.sClassName then 
             return 
@@ -117,6 +122,7 @@ function ShapeTextInput:Create(sClassName)
          end
       end
 
+      self:Trace(1,self:GetAttr("sText"))
       local osString = love.system.getOS() 
       local control 
       if osString == "OS X" then
