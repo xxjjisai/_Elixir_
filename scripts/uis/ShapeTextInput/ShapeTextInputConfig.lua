@@ -4,11 +4,11 @@ local ShapeTextInputConfig =
     bEnabled = true;
     x = 100;
     y = 100;
-    w = 100;
+    w = 200;
     h = 50;
     style = {
         bBg = true;
-        bBorder = true;
+        bBorder = false;
         sborderFill = "line";
         sbgFill = "fill";
         nFontSize = 182;
@@ -27,5 +27,6 @@ local ShapeTextInputConfig =
     bFiledropped = false; -- 是否允许文件拖入窗口读取 
     bNumber = false; -- 是否限制只输入数字 
     nLayerIndex = 1; -- 渲染层级
+    bInPanel = false, -- 是否加入面板
 }
 return ShapeTextInputConfig

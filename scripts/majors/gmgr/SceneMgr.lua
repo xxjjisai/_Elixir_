@@ -162,8 +162,10 @@ function SceneMgr:Render()
 
     local tbUIList = self.tbCurScene:GetAllUI();
     for _,iUI in ipairs(tbUIList) do 
-        if iUI.Render then 
-            iUI:Render(dt);
+        if not iUI:GetAttr("bInPanel") then 
+            if iUI.Render then 
+                iUI:Render(dt);
+            end
         end
     end
 

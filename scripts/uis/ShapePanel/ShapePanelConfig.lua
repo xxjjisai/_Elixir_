@@ -26,6 +26,7 @@ local ShapeButtonConfig =
     bHoverMove = false, -- 是否滑入移动
     bShowHover = true, 
     nLayerIndex = 1, -- 渲染层级
-    bInPanel = false, -- 是否加入面板
+    sStencilAction = "replace", -- 模具函数如何修改所接触像素的模具值。
+    bV = true; -- 垂直拖拽
 }
 return ShapeButtonConfig

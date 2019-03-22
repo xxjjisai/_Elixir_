@@ -1,23 +1,0 @@
-hi,my name is zhaokai
-hello
-my lua
-
-love 2d 
-
-ok 
-bye
-
-kjk
-
-11hi,my name is zhadddddai
-hello
-my lua
-
-love 2d 
-
-ddddd 
-bye
-
-kjk
-
-11

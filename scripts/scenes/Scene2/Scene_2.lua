@@ -1,4 +1,4 @@
-_G.Scene_1 = 
+_G.Scene_2 = 
 {
     tbActor = 
     {
@@ -13,6 +13,6 @@ _G.Scene_1 =
 
     tbSystem = 
     {
-        'Scene1',
+        'Scene2',
     };
 }
