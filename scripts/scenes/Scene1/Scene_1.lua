@@ -9,6 +9,7 @@ _G.Scene_1 =
     { 
         -- { sUIType = 'ShapeButton', sUseName = 'btn_1' },
         -- { sUIType = 'ShapeTextInput', sUseName = 'input_1' },
+        { sUIType = 'ShapeList', sUseName = 'list_1' },
     },
 
     tbSystem = 

@@ -67,10 +67,10 @@ function ShapePanel:Create(sClassName)
       if not self:GetAttr("bVisible") then 
          return 
       end 
+      
       if not self:GetAttr("bEnabled") then 
          return 
-      end 
-
+      end  
 
    end
 

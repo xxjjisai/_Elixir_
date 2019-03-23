@@ -39,6 +39,15 @@ def QueryActorName():
             tbActorName.append(name)
     return tbActorName
 
+#查询角色名称
+def QueryCompoName():
+    tbCompoName = []
+    sDir = "scripts/compos"
+    for _, _, files in os.walk(sDir, topdown=False):
+        for name in files:
+            tbCompoName.append(name)
+    return tbCompoName
+
 #创建场景
 def CreateScene(nSceneID):
     # print(nSceneID)
@@ -73,6 +82,7 @@ def CreateScene(nSceneID):
         "    { \n"
         "        -- { sUIType = 'ShapeButton', sUseName = 'btn_1' },\n"
         "        -- { sUIType = 'ShapeTextInput', sUseName = 'input_1' },\n"
+        "        -- { sUIType = 'ShapeList', sUseName = 'list_1' },\n"
         "    },\n"
         "\n"
         "    tbSystem = \n"
@@ -108,6 +118,9 @@ def CreateScene(nSceneID):
     f.write(json.dumps(fileJson))
     f.close()
 
+    tbSceneList = QuerySceneName()
+    print(f"创建场景{sDirName}完成！当前场景列表：{tbSceneList}")
+
     pass
 
 #删除场景
@@ -138,6 +151,10 @@ def DeleteScene(nSceneID):
         f = open(jsonFile,"w")
         f.write(json.dumps(fileJson))
         f.close()
+
+        
+    tbSceneList = QuerySceneName()
+    print(f"删除场景{sDirName}完成！当前场景列表：{tbSceneList}")
     pass
 
 #创建Actor
@@ -185,7 +202,9 @@ def CreateActor(sActorName):
     f = open(sFileCfgName,"x")
     f.write(sCfgContent)
     f.close()
- 
+
+    tbActorList = QueryActorName()
+    print(f"创建Actor{sActorName}完成！当前Actor列表：{tbActorList}")
     pass
 
 #删除Actor
@@ -205,14 +224,60 @@ def DeleteActor(sActorName):
             for name in dirs:
                 os.rmdir(os.path.join(root, name))
         os.rmdir(sPath)
+
+    tbActorList = QueryActorName()
+    print(f"删除Actor{sActorName}完成！当前Actor列表：{tbActorList}")
     pass
 
 #创建组件
-def CreateCompo():
+def CreateCompo(sCompoName,sDes):
+
+    sDir = "scripts/compos"
+    sFileCompo = f"{sCompoName}.lua"
+    sFileCompoName = f"{sDir}/{sFileCompo}"
+    sCompoContent = (
+        f" -- {sDes}\n"
+        f" local {sCompoName} = {{}};\n"
+        "\n"
+        f" function {sCompoName}:New(tbParams)\n"
+        f"    local obj = Compo:DeriveClass('{sCompoName}');\n"
+        "\n"
+        "     return obj;\n" 
+        " end\n" 
+        "\n"
+        f" return {sCompoName};\n"
+    )
+
+    if os.path.exists(sFileCompoName) :
+        print("该组件已存在！")
+        return
+
+    f = open(sFileCompoName,"x")
+    f.write(sCompoContent)
+    f.close()
+
+    tbCompoList = QueryCompoName()
+    print(f"创建组件{sCompoName}完成！当前组件列表：{tbCompoList}")
     pass
 
 #删除组件
-def DeleteCompo():
+def DeleteCompo(sCompoName):
+
+    sDir = "scripts/compos"
+    sDirName = f"{sCompoName}.lua"
+
+    sPath = sDir
+    if not os.path.exists(sPath) :
+        print("该组件不存在！")
+        return
+    else:
+        for root, _, files in os.walk(sPath, topdown=False):
+            for name in files:
+                if sDirName == name:
+                    os.remove(os.path.join(root, name))
+
+    tbCompoList = QueryCompoName()
+    print(f"删除组件{sCompoName}完成！当前组件列表：{tbCompoList}")
     pass
 
 #创建公共系统
@@ -245,10 +310,13 @@ if __name__=="__main__":
         eli scene -d 5 : 删除ID为5的场景
         eli actor -c Actor ：创建名称为Actor的角色
         eli actor -d Actor : 删除名称为Actor的角色
-        eli q scene -a : 查询场景总数
-        eli q scene -b : 查询场景名称
-        eli q actor -a : 查询角色总数
-        eli q actor -b : 查询角色名称
+        eli compo -c Compo sDes ：创建名称为Compo的组件,并且添加描述
+        eli compo -d Compo : 删除名称为Compo的组件
+        eli q scene -a : 查询场景总数列表
+        eli q scene -b : 查询场景名称列表
+        eli q actor -a : 查询角色总数列表
+        eli q actor -b : 查询角色名称列表
+        eli q compo -b : 查询组件名称列表
         '''
         
 
@@ -285,6 +353,24 @@ if __name__=="__main__":
             pass 
         pass
     elif cmdName == "compo" :
+        sOper = sys.argv[2]
+        if sOper == "-c": # create
+            sCompoName = sys.argv[3]
+            nLength = len(sys.argv)
+            if nLength > 4:
+                sDes = sys.argv[4]
+            else:
+                sDes = sCompoName
+            CreateCompo(sCompoName,sDes)
+        elif sOper == "-d": # delete
+            sCompoName = sys.argv[3]
+            DeleteCompo(sCompoName)
+        else:
+            print("请输入正确的命令！")
+            pass 
+        pass
+        pass
+    elif cmdName == "cosys" :
         pass
     elif cmdName == "cosys" :
         pass
@@ -303,8 +389,13 @@ if __name__=="__main__":
                 nSceneCount = QueryActorCount()
                 print(f"Actor数量：{nSceneCount}")
             elif sys.argv[3] == "-b": #查询Actor名称
-                tbSceneName = QueryActorName()
-                print(f"Actor名称列表：{tbSceneName}")
+                tbActorName = QueryActorName()
+                print(f"Actor名称列表：{tbActorName}")
+        if sys.argv[2] == "compo":
+            if sys.argv[3] == "-b": #查询Actor名称
+                tbCompoName = QueryCompoName()
+                print(f"Compo名称列表：{tbCompoName}")
+
         pass
     else:
         pass
