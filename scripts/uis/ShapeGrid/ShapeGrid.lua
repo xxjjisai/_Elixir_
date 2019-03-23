@@ -1,77 +1,62 @@
 local ShapeGrid = {};
 function ShapeGrid:Create(sClassName)
    local obj = UI:DeriveClass(sClassName);
-   obj.iChild = nil
+   obj.tbChildren = {};
 
-   local function StencilFunction()
-      love.graphics.rectangle("fill", obj:GetAttr("x"),obj:GetAttr("y"),obj:GetAttr("w"),obj:GetAttr("h"));
+   function obj:AddItem(iUI)
+      table.insert(self.tbChildren,iUI);
+      self:ResetPosHandler();
    end
 
-   function obj:Init()
-      self.iChild = {};
-      self.iChild.x = 0; 
-      self.iChild.y = 0; 
-      self.iChild.tbItems = {}; 
-      love.graphics.stencil(StencilFunction, self:GetAttr("sStencilAction"), 1);
+   function obj:DelItem(iUI)
+      local nDelIndex = 0;
+      for i,v in ipairs(self.tbChildren) do 
+         if v.sClassName == iUI.sClassName then 
+            nDelIndex = i;
+            break;
+         end
+      end
+      table.remove(self.tbChildren,nDelIndex);
+      self:ResetPosHandler();
    end
 
-   function obj:AddInPanel(iChild)
-      iChild:SetAttr("bInPanel",true);
-      self.iChild = self.iChild or {};
-      self.iChild.tbItems = self.iChild.tbItems or {};
-      self.iChild.tbItems[iChild.sClassName] = iChild;
-      -- self:Trace(1,"Start~~~~~self.iChild.tbItems~~~~~",table.show(self.iChild.tbItems,'self.iChild.tbItems'))
-   end
-   
-   function obj:GetPanelChildren()
-      return self.iChild;
-   end
-
-   function obj:GetPanelChildByName(sClassName)
-      return self.iChild.tbItems[sClassName];
-   end
-
-   function obj:Clear()
-      self.iChild.tbItems = {};
+   function obj:ResetPosHandler()
+      self:SetAttr("nCol",1);
+      self:SetAttr("nRow",1);
+      local nGridWidth = 0;
+      local nGridHeight = 0;
+      for i,iUI in ipairs(self.tbChildren) do 
+         self:SetAttr("nCellWidth",iUI:GetAttr("w"));
+         self:SetAttr("nCellHeight",iUI:GetAttr("h"));
+         iUI:SetAttr("x",self:GetAttr("x") + self:GetAttr("nRow") * (self:GetAttr("nCellWidth") + self:GetAttr("nSpace")));
+         iUI:SetAttr("y",self:GetAttr("y") + self:GetAttr("nCol") * (self:GetAttr("nCellHeight") + self:GetAttr("nSpace")));
+         if i % self:GetAttr("nLength") == 0 then 
+            self:SetAttr("nCol",self:GetAttr("nCol") + 1)
+            self:SetAttr("nRow",0)
+         end 
+         self:SetAttr("nRow",self:GetAttr("nRow") + 1)
+      end 
+      nGridWidth =  (self:GetAttr("nCellWidth") + self:GetAttr("nSpace")) * self:GetAttr("nLength")
+      nGridHeight = (self:GetAttr("nCellHeight") + self:GetAttr("nSpace")) * self:GetAttr("nCol")
+      self:SetAttr("w",nGridWidth)
+      self:SetAttr("h",nGridHeight)
    end
 
    function obj:Update(dt)
-      if next(self.iChild.tbItems) then 
-         for _,iUI in pairs(self.iChild.tbItems) do 
-            if self:GetAttr("bV") then 
-               iUI:SetAttr("y", iUI:GetAttr("y") + self.iChild.y)
-            else 
-               iUI:SetAttr("x", iUI:GetAttr("x") + self.iChild.x)
-            end
-         end 
-      end 
+      self:ResetPosHandler();
    end
 
    function obj:Render()
-      love.graphics.stencil(StencilFunction, "replace", 1)
-      love.graphics.setStencilTest("greater", 0)
-      if next(self.iChild.tbItems) then 
-         for _,iUI in pairs(self.iChild.tbItems) do 
-            if iUI.Render then 
-               iUI:Render()
-            end
-         end 
-      end 
-      love.graphics.setStencilTest()
-      love.graphics.setColor(0,0,0,1)
-      love.graphics.rectangle("line", self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"));
-      love.graphics.setColor(1,1,1,1)
-   end
-
-   function obj:MouseDown(x,y,button,istouch, presses)
       if not self:GetAttr("bVisible") then 
          return 
       end 
-      
-      if not self:GetAttr("bEnabled") then 
-         return 
-      end  
-
+      local bBorder = self:GetAttr("style").bBorder;
+      if not bBorder then
+         return
+      end
+      local bordercolor = self:GetAttr("style").bordercolor;
+      love.graphics.setColor(bordercolor);
+      love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x") + self:GetAttr("nCellWidth"),self:GetAttr("y") + self:GetAttr("nCellHeight"),self:GetAttr("w"),self:GetAttr("h"))
    end
 
    return obj;

@@ -10,7 +10,7 @@ local ShapeGridConfig =
     bAutoPos = false,
     style = {
         bBg = true,
-        bBorder = false,
+        bBorder = true,
         sborderFill = "line",
         sbgFill = "fill",
         nFontSize = 182,
@@ -27,6 +27,11 @@ local ShapeGridConfig =
     bShowHover = true, 
     nLayerIndex = 1, -- 渲染层级
     sStencilAction = "replace", -- 模具函数如何修改所接触像素的模具值。
-    bV = true; -- 垂直拖拽
+    nCol = 1; -- 不可修改，必须为1
+    nRow = 1; -- 不可修改，必须为1
+    nLength = 4; -- 单行长度
+    nSpace = 3; -- 间隔
+    nCellWidth = 100; -- 
+    nCellHeight = 100;
 }
 return ShapeGridConfig

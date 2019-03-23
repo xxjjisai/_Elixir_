@@ -36,7 +36,7 @@ function love.load()
 
     if Option.bLog then 
         local str = string.format(" \n ******************************* [ %s ] ******************************* \n ",os.date("%c"));
-        local file = io.open('gc.log', 'w')
+        local file = io.open('gc.log', 'w');
         file:write(str.."\n");
         file:close();
     end

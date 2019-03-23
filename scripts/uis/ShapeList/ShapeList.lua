@@ -3,30 +3,39 @@ function ShapeList:Create(sClassName)
    local obj = UI:DeriveClass(sClassName);
    obj.tbChildren = {};
 
-   function obj:AddItem(iUI)
-      local len = #self.tbChildren
+   function obj:AddItem(iUI) 
       table.insert(self.tbChildren,iUI);
-      if len <= 0 then
-         iUI:SetAttr("y", self:GetAttr("y"));
-         iUI:SetAttr("x", self:GetAttr("x"));
-         self:SetAttr("w", iUI:GetAttr("w"));
-         self:SetAttr("h", iUI:GetAttr("h"));
-         return
-      end
-      local iLastUI = self.tbChildren[len];
-      local nFinalX = iLastUI:GetAttr("x");
-      local nFinalY = iLastUI:GetAttr("y");
-      local nFinalW = iLastUI:GetAttr("w");
-      local nFinalH = iLastUI:GetAttr("h");
+      self:ResetPosHandler(); 
+   end
 
-      if self:GetAttr("bV") then 
-         iUI:SetAttr("y", nFinalY + nFinalH + self:GetAttr("nSpace"));
-         iUI:SetAttr("x", nFinalX);
-         self:SetAttr("h", self:GetAttr("h") + nFinalH + self:GetAttr("nSpace"));
-      else 
-         iUI:SetAttr("x", nFinalX + nFinalW + self:GetAttr("nSpace"));
-         iUI:SetAttr("y", nFinalY);
-         self:SetAttr("w", self:GetAttr("w") + nFinalW + self:GetAttr("nSpace"));
+   function obj:Update(dt)
+      self:ResetPosHandler();
+   end
+
+   function obj:ResetPosHandler()
+      local iLastUI = nil;
+      for i,v in ipairs(self.tbChildren) do 
+         if i == 1 then 
+            v:SetAttr("y", self:GetAttr("y"));
+            v:SetAttr("x", self:GetAttr("x"));
+            self:SetAttr("w", v:GetAttr("w"));
+            self:SetAttr("h", v:GetAttr("h"));
+         else 
+            local nFinalX = iLastUI:GetAttr("x");
+            local nFinalY = iLastUI:GetAttr("y");
+            local nFinalW = iLastUI:GetAttr("w");
+            local nFinalH = iLastUI:GetAttr("h");
+            if self:GetAttr("bV") then 
+               v:SetAttr("y", nFinalY + nFinalH + self:GetAttr("nSpace"));
+               v:SetAttr("x", nFinalX);
+               self:SetAttr("h", self:GetAttr("h") + nFinalH + self:GetAttr("nSpace"));
+            else 
+               v:SetAttr("x", nFinalX + nFinalW + self:GetAttr("nSpace"));
+               v:SetAttr("y", nFinalY);
+               self:SetAttr("w", self:GetAttr("w") + nFinalW + self:GetAttr("nSpace"));
+            end
+         end
+         iLastUI = v;
       end
    end
 
