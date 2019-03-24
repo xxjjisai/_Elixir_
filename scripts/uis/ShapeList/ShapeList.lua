@@ -4,15 +4,24 @@ function ShapeList:Create(sClassName)
    obj.tbChildren = {};
 
    function obj:AddItem(iUI) 
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       table.insert(self.tbChildren,iUI);
       self:ResetPosHandler(); 
    end
 
    function obj:Update(dt)
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       self:ResetPosHandler();
    end
 
    function obj:ResetPosHandler()
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       local iLastUI = nil;
       for i,v in ipairs(self.tbChildren) do 
          self:SetAttr("nCellWidth",v:GetAttr("w"));
@@ -39,6 +48,20 @@ function ShapeList:Create(sClassName)
          end
          iLastUI = v;
       end
+   end
+
+   function obj:Hide()
+      for i,iUI in ipairs(self.tbChildren) do 
+         iUI:SetAttr("bVisible",false)
+      end 
+      self:SetAttr("bVisible",false)
+   end
+
+   function obj:Show()
+      for i,iUI in ipairs(self.tbChildren) do 
+         iUI:SetAttr("bVisible",true)
+      end 
+      self:SetAttr("bVisible",true)
    end
 
    -- function obj:Render()

@@ -4,11 +4,17 @@ function ShapeGrid:Create(sClassName)
    obj.tbChildren = {};
 
    function obj:AddItem(iUI)
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       table.insert(self.tbChildren,iUI);
       self:ResetPosHandler()
    end
 
    function obj:DelItem(iUI)
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       if iUI == nil then return end
       local nDelIndex = 0;
       for i,v in ipairs(self.tbChildren) do 
@@ -27,6 +33,9 @@ function ShapeGrid:Create(sClassName)
    end
 
    function obj:ResetPosHandler()
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       self:SetAttr("nCol",1);
       self:SetAttr("nRow",1);
       local nGridWidth = 0;
@@ -50,7 +59,24 @@ function ShapeGrid:Create(sClassName)
    end
 
    function obj:Update(dt)
+      if not self:GetAttr("bVisible") then 
+         return 
+      end 
       self:ResetPosHandler();
+   end
+
+   function obj:Hide()
+      self:SetAttr("bVisible",false)
+      for i,iUI in ipairs(self.tbChildren) do 
+         iUI:SetAttr("bVisible",false)
+      end 
+   end
+
+   function obj:Show()
+      for i,iUI in ipairs(self.tbChildren) do 
+         iUI:SetAttr("bVisible",true)
+      end 
+      self:SetAttr("bVisible",true)
    end
 
    -- function obj:Render()
