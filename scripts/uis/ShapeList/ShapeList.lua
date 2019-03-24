@@ -15,6 +15,8 @@ function ShapeList:Create(sClassName)
    function obj:ResetPosHandler()
       local iLastUI = nil;
       for i,v in ipairs(self.tbChildren) do 
+         self:SetAttr("nCellWidth",v:GetAttr("w"));
+         self:SetAttr("nCellHeight",v:GetAttr("h")); 
          if i == 1 then 
             v:SetAttr("y", self:GetAttr("y"));
             v:SetAttr("x", self:GetAttr("x"));
@@ -39,18 +41,18 @@ function ShapeList:Create(sClassName)
       end
    end
 
-   function obj:Render()
-      if not self:GetAttr("bVisible") then 
-         return 
-      end 
-      local bBorder = self:GetAttr("style").bBorder;
-      if not bBorder then
-         return
-      end
-      local bordercolor = self:GetAttr("style").bordercolor;
-      love.graphics.setColor(bordercolor);
-      love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
-   end
+   -- function obj:Render()
+   --    if not self:GetAttr("bVisible") then 
+   --       return 
+   --    end 
+   --    local bBorder = self:GetAttr("style").bBorder;
+   --    if not bBorder then
+   --       return
+   --    end
+   --    local bordercolor = self:GetAttr("style").bordercolor;
+   --    love.graphics.setColor(bordercolor);
+   --    love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
+   -- end
 
    return obj;
 end

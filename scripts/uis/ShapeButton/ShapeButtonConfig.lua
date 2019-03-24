@@ -2,12 +2,10 @@ local ShapeButtonConfig =
 {
     bVisible = true,
     bEnabled = true,
-    nItemID = 0,
     x = 300;
     y = 100;
     w = 70;
     h = 50;
-    bAutoPos = false,
     style = {
         bBg = true,
         bBorder = false,

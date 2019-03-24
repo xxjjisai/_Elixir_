@@ -113,11 +113,11 @@ function GameMgr:KeyBoardDown(key, scancode, isrepeat)
     if key == "return" then 
         if Option.sGameState == "MENU" then 
             if Option.bMenuPlayed == true then
-                Option.sGameState = "GUODU"
-                GuoDuMgr:Start(function ()
+                -- Option.sGameState = "GUODU"
+                -- GuoDuMgr:Start(function ()
                     Option.sGameState = "PLAY";
                     GameMgr:Init(); 
-                end);
+                -- end);
             end
         end
     end 

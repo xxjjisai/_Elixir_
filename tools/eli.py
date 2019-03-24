@@ -83,6 +83,7 @@ def CreateScene(nSceneID):
         "        -- { sUIType = 'ShapeButton', sUseName = 'btn_1' },\n"
         "        -- { sUIType = 'ShapeTextInput', sUseName = 'input_1' },\n"
         "        -- { sUIType = 'ShapeList', sUseName = 'list_1' },\n"
+        "        -- { sUIType = 'ShapeGrid', sUseName = 'grid_1' },\n"
         "    },\n"
         "\n"
         "    tbSystem = \n"

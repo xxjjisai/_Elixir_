@@ -26,5 +26,8 @@ local ShapeListConfig =
     nLayerIndex = 1, -- 渲染层级 
     bV = true; -- True 垂直分布 False 水平分布
     nSpace = 1; -- 分布间隔
+    nCellWidth = 1; -- 分布间隔
+    nCelHeight = 1; -- 分布间隔
+    nSpace = 1; -- 分布间隔
 }
 return ShapeListConfig

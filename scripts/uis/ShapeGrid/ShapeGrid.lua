@@ -5,10 +5,11 @@ function ShapeGrid:Create(sClassName)
 
    function obj:AddItem(iUI)
       table.insert(self.tbChildren,iUI);
-      self:ResetPosHandler();
+      self:ResetPosHandler()
    end
 
    function obj:DelItem(iUI)
+      if iUI == nil then return end
       local nDelIndex = 0;
       for i,v in ipairs(self.tbChildren) do 
          if v.sClassName == iUI.sClassName then 
@@ -16,7 +17,12 @@ function ShapeGrid:Create(sClassName)
             break;
          end
       end
+      self:Trace(1,nDelIndex,iUI.sClassName)
+      if nDelIndex == 0 then return end
+      self:Trace(2,nDelIndex,#self.tbChildren)
       table.remove(self.tbChildren,nDelIndex);
+      self:Trace(2,#self.tbChildren)
+      UIMgr:RemoveUI(iUI.sUseName)
       self:ResetPosHandler();
    end
 
@@ -28,14 +34,15 @@ function ShapeGrid:Create(sClassName)
       for i,iUI in ipairs(self.tbChildren) do 
          self:SetAttr("nCellWidth",iUI:GetAttr("w"));
          self:SetAttr("nCellHeight",iUI:GetAttr("h"));
-         iUI:SetAttr("x",self:GetAttr("x") + self:GetAttr("nRow") * (self:GetAttr("nCellWidth") + self:GetAttr("nSpace")));
-         iUI:SetAttr("y",self:GetAttr("y") + self:GetAttr("nCol") * (self:GetAttr("nCellHeight") + self:GetAttr("nSpace")));
+         iUI:SetAttr("x",self:GetAttr("x") + self:GetAttr("nRow") * (self:GetAttr("nCellWidth") + self:GetAttr("nSpace")) - self:GetAttr("nCellWidth"));
+         iUI:SetAttr("y",self:GetAttr("y") + self:GetAttr("nCol") * (self:GetAttr("nCellHeight") + self:GetAttr("nSpace")) - self:GetAttr("nCellHeight"));
          if i % self:GetAttr("nLength") == 0 then 
             self:SetAttr("nCol",self:GetAttr("nCol") + 1)
             self:SetAttr("nRow",0)
          end 
          self:SetAttr("nRow",self:GetAttr("nRow") + 1)
       end 
+
       nGridWidth =  (self:GetAttr("nCellWidth") + self:GetAttr("nSpace")) * self:GetAttr("nLength")
       nGridHeight = (self:GetAttr("nCellHeight") + self:GetAttr("nSpace")) * self:GetAttr("nCol")
       self:SetAttr("w",nGridWidth)
@@ -46,18 +53,18 @@ function ShapeGrid:Create(sClassName)
       self:ResetPosHandler();
    end
 
-   function obj:Render()
-      if not self:GetAttr("bVisible") then 
-         return 
-      end 
-      local bBorder = self:GetAttr("style").bBorder;
-      if not bBorder then
-         return
-      end
-      local bordercolor = self:GetAttr("style").bordercolor;
-      love.graphics.setColor(bordercolor);
-      love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x") + self:GetAttr("nCellWidth"),self:GetAttr("y") + self:GetAttr("nCellHeight"),self:GetAttr("w"),self:GetAttr("h"))
-   end
+   -- function obj:Render()
+   --    if not self:GetAttr("bVisible") then 
+   --       return 
+   --    end 
+   --    local bBorder = self:GetAttr("style").bBorder;
+   --    if not bBorder then
+   --       return
+   --    end
+   --    local bordercolor = self:GetAttr("style").bordercolor;
+   --    love.graphics.setColor(bordercolor);
+   --    love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x") ,self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
+   -- end
 
    return obj;
 end
