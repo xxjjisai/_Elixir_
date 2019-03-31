@@ -11,6 +11,7 @@ require("scripts/majors/base/System");
 require("scripts/majors/base/Model");
 require("scripts/majors/base/Chain");
 require("scripts/majors/base/UI");
+require("scripts/majors/base/Enemy");
 
 require("settings/Option");
 

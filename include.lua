@@ -77,7 +77,8 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"UILayerSortSystem");
 
     local strMysystemDir = "scripts/systems/mysystem/";
-    -- self:RequireHandler(strMysystemDir,"KeyBoardMoveSystem"); 
+    self:RequireHandler(strMysystemDir,"StateMachineSystem");
+    self:RequireHandler(strMysystemDir,"MapGeneratorSystem");
 
 end
 

@@ -182,3 +182,12 @@
 -- 2.新建场景配置文件 Scene_0.lua 和场景系统文件 Scene0.lua 
 -- 3.修改  GameDataCfg.lua 中 nMaxSceneCount 为 0
 -- 4.Scene_0.lua 中 tbSystem 新增字段 "Scene0"
+
+-- 生成地图
+-- local iScene = self:GetCurScene();
+-- local iMapGeneratorSystemSys = iScene:GetSystemByName("MapGeneratorSystem");
+-- iMapGeneratorSystemSys:GeneratorHandler();
+-- local iMap = iScene:GetActorByTagType("Map");
+-- local iMapCompo = iMap:GetiCompo("Map");
+-- iMapGeneratorSystemSys:CreateTile(iMapCompo);
+-- iMapGeneratorSystemSys:CreateEdge(iMapCompo);

@@ -47,10 +47,20 @@ function ShapeButton:Create(sClassName)
       end
       if self:GetAttr("style").bBg then 
          love.graphics.setColor(bgcolor);
-         love.graphics.rectangle(self:GetAttr("style").sbgFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
-         if self:GetAttr("style").bBorder then 
-            love.graphics.setColor(bordercolor);
+         if self:GetAttr("style").bRectangle then 
+            love.graphics.rectangle(self:GetAttr("style").sbgFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
+         end
+         if self:GetAttr("style").bCircle then 
+            love.graphics.circle(self:GetAttr("style").sbgFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"))
+         end
+      end
+      if self:GetAttr("style").bBorder then 
+         love.graphics.setColor(bordercolor);
+         if self:GetAttr("style").bRectangle then 
             love.graphics.rectangle(self:GetAttr("style").sborderFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"),self:GetAttr("h"))
+         end
+         if self:GetAttr("style").bCircle then 
+            love.graphics.circle(self:GetAttr("style").sborderFill,self:GetAttr("x"),self:GetAttr("y"),self:GetAttr("w"))
          end
       end
       love.graphics.setColor(txtcolor);

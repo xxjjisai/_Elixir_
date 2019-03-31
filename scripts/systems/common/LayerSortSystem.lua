@@ -18,7 +18,12 @@ function LayerSortSystem:RogueLikeSortHandler()
         if nLayer == RenderLayerType.nPlayer then 
             table.sort(tbLayer, function(a,b)
                 if a ~= nil and b ~= nil then 
-                    return a:GetiCompo("Transform").y + a:GetiCompo("Transform").h < b:GetiCompo("Transform").y + b:GetiCompo("Transform").h
+                    local ay = a:GetiCompo("Transform").y + a:GetiCompo("Transform").h;
+                    local by = b:GetiCompo("Transform").y + b:GetiCompo("Transform").h;
+                    if ay == by then 
+                        by = by + 0.1
+                    end
+                    return ay < by;
                 end
             end)
         end

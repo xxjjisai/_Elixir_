@@ -629,3 +629,12 @@ function table.elem_swap(table, r1, r2)
     end
     return false;
 end
+
+function ColorTransformForLove11(r,g,b)
+    local colorx = function (r,g,b)
+        return r/255,g/255,b/255
+    end 
+    str = string.format("r = %.2f, g = %.2f, b = %.2f, a = 1",colorx(r,g,b));
+    print(str)
+    return str
+end

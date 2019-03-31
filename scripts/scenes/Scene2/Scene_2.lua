@@ -1,10 +1,8 @@
-_G.Scene_1 = 
+_G.Scene_2 = 
 {
     tbActor = 
     {
         { sActorType = 'Player', sUseName = 'Player1' },
-        { sActorType = 'Player', sUseName = 'Player2' },
-        { sActorType = "Map"; tbProperty = { ["Map"] = { nCellCount = 1115 } }},
     };
 
     tbUI = 
@@ -17,10 +15,6 @@ _G.Scene_1 =
 
     tbSystem = 
     {
-        'RectangleRenderSystem',
-        'SpriteRenderSystem',
-        'AnimationSystem',
-        'MapGeneratorSystem',
-        'Scene1',
+        'Scene2',
     };
 }

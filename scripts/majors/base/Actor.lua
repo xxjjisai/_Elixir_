@@ -22,6 +22,10 @@ function Actor:GetiCompo(sClassName)
     return self.tbiCompoList[sClassName];
 end 
 
+function Actor:SetiCompo(sClassName,sKey,nValue)
+    self.tbiCompoList[sClassName][sKey] = nValue;
+end 
+
 function Actor:BindCompo(cfg) 
     local cfg = cfg;
     for i,v in pairs(cfg) do 
