@@ -3,8 +3,13 @@ _G.Scene_1 =
     tbActor = 
     {
         { sActorType = 'Player', sUseName = 'Player1' },
-        { sActorType = 'Player', sUseName = 'Player2' },
-        { sActorType = "Map"; tbProperty = { ["Map"] = { nCellCount = 1115 } }},
+        { sActorType = "Map", sUseName = 'Map1' },
+    };
+
+    tbMap = 
+    {
+        nWalkCount = 200;
+        tbActor = {"Tile", "Edge"};
     };
 
     tbUI = 
@@ -21,6 +26,7 @@ _G.Scene_1 =
         'SpriteRenderSystem',
         'AnimationSystem',
         'MapGeneratorSystem',
+        'LayerSortSystem',
         'Scene1',
     };
 }

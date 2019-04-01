@@ -4,7 +4,7 @@ MapGeneratorSystem:SetRegisterCompo{
     "Map","AStar"
 };
 
-function MapGeneratorSystem:GeneratorHandler()
+function MapGeneratorSystem:GeneratorHandler(pfn)
     local iScene = self:GetCurScene();
     local iMap = iScene:GetActorByTagType("Map");
     if not self:GetRegisterCompo(iMap) then return end
@@ -40,7 +40,9 @@ function MapGeneratorSystem:GeneratorHandler()
         self.nCount = self.nCount + 1;
     end 
 
-    return 
+    if pfn then 
+        pfn()  
+    end
 end
 
 function MapGeneratorSystem:GetSameItem(tbDataMapInfo,tbNode)
@@ -70,7 +72,21 @@ function MapGeneratorSystem:CreateTile(iMapCompo)
         iScene:AddActor(iTile);
         iTile:ChangeiCompoParam({
             ["Transform"] = { x = tbNode.x, y = tbNode.y };
+            ["Color"] = { r = 0.14, g = 0.55, b = 0.29, a = 1 };
         });
+        
+        -- if i==1 then 
+        --     iTile:ChangeiCompoParam({
+        --         ["Transform"] = { x = tbNode.x, y = tbNode.y };
+        --         ["Color"] = { r = 1, g = 0, b = 0, a = 1 };
+        --     });
+        -- elseif i==#iMapCompo.tbRealMapInfo then 
+        --     iTile:ChangeiCompoParam({
+        --         ["Transform"] = { x = tbNode.x, y = tbNode.y };
+        --         ["Color"] = { r = 0, g = 0, b = 1, a = 1 };
+        --     });
+        -- end
+
         tbNode.nWalkAble = 1;
         tbNode.nID = Origin:SetUniqueID();
         tbNode.addNeighbors(tbNode,iMapCompo.tbRealMapInfo);

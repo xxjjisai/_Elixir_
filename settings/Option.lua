@@ -1,6 +1,6 @@
 _G.Option = 
 {
-    bDebug = true;                                 -- [Y]是否为调试模式
+    bDebug = false;                                 -- [Y]是否为调试模式
     sGameType = "ROGUELIKE";                        -- [Y]当前游戏类型（用来设定渲染层级方式等）
     bGameInfo = false;                              -- [Y]System及Actor信息
     bDoFileComplete = false;                        -- [N]文件是否加载完成
@@ -16,6 +16,6 @@ _G.Option =
     bPaused = false;                                -- [Y]是否暂停
     nMaxSceneCount = 0;                             -- [N]如果是设计的场景，场景总数，在 include 中进行赋值
     bStore = false;                                 -- [Y]是否开启外部存储
-    bBackGroundStatic = true;                      -- [Y]游戏背景是否为静态（是否开启摄像机干涉）
+    bBackGroundStatic = true;                       -- [Y]游戏背景是否为静态（是否开启摄像机干涉）
     bCamera_FollowPlayer = true;                    -- [Y]摄像机是否跟随玩家
 }

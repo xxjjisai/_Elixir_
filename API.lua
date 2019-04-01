@@ -185,9 +185,16 @@
 
 -- 生成地图
 -- local iScene = self:GetCurScene();
--- local iMapGeneratorSystemSys = iScene:GetSystemByName("MapGeneratorSystem");
--- iMapGeneratorSystemSys:GeneratorHandler();
 -- local iMap = iScene:GetActorByTagType("Map");
 -- local iMapCompo = iMap:GetiCompo("Map");
--- iMapGeneratorSystemSys:CreateTile(iMapCompo);
--- iMapGeneratorSystemSys:CreateEdge(iMapCompo);
+-- local iMapGeneratorSystemSys = iScene:GetSystemByName("MapGeneratorSystem");
+-- iMapGeneratorSystemSys:GeneratorHandler(function ()
+--     iMapGeneratorSystemSys:CreateTile(iMapCompo);
+--     iMapGeneratorSystemSys:CreateEdge(iMapCompo);
+-- end);
+
+-- 生成地图 (简便的写法与上例相同)
+-- self:GetCurScene():GetSystemByName("MapGeneratorSystem"):GeneratorHandler(function ()
+--     self:GetCurScene():GetSystemByName("MapGeneratorSystem"):CreateTile(self:GetCurScene():GetActorByTagType("Map"):GetiCompo("Map"));
+--     self:GetCurScene():GetSystemByName("MapGeneratorSystem"):CreateEdge(self:GetCurScene():GetActorByTagType("Map"):GetiCompo("Map"));
+-- end);

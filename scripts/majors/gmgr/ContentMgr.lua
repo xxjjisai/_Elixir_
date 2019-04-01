@@ -15,6 +15,26 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
     for _,sSystemName in ipairs(cfg.tbSystem) do 
         iScene:RegisterSystem(_G[sSystemName]);
     end 
+    if cfg.tbMap then 
+        local iMap = iScene:GetActorByTagType("Map");
+        if iMap then 
+            local iMapCompo = iMap:GetiCompo("Map");
+            iMapCompo.nCellCount = cfg.tbMap.nWalkCount;
+            local iMapGeneratorSystemSys = iScene:GetSystemByName("MapGeneratorSystem");
+            iMapGeneratorSystemSys:GeneratorHandler(function ()
+                for _,sActor in ipairs(cfg.tbMap.tbActor) do 
+                    iMapGeneratorSystemSys["Create"..sActor](iMapGeneratorSystemSys,iMapCompo);
+                end
+            end);
+            local iPlayer = iScene:GetActorByTagType("Player");
+            local nPw = iPlayer:GetiCompo("Transform").w;
+            local nPh = iPlayer:GetiCompo("Transform").h;
+            local tbBorn = iMapCompo.tbRealMapInfo[1]; 
+            iPlayer:ChangeiCompoParam({
+                ["Transform"] = { x = tbBorn.x, y = tbBorn.y - nPh/2 };
+            });
+        end
+    end
     if fCallback then fCallback(); end 
 end
 

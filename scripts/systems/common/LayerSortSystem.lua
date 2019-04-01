@@ -21,7 +21,7 @@ function LayerSortSystem:RogueLikeSortHandler()
                     local ay = a:GetiCompo("Transform").y + a:GetiCompo("Transform").h;
                     local by = b:GetiCompo("Transform").y + b:GetiCompo("Transform").h;
                     if ay == by then 
-                        by = by + 0.1
+                        by = by - 1
                     end
                     return ay < by;
                 end

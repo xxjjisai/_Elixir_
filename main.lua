@@ -25,7 +25,7 @@ function love.load()
     _G.graphicsWidth  = love.graphics.getWidth();
     _G.graphicsHeight = love.graphics.getHeight();
     _G.screenWidth, _G.screenHeight = love.window.getDesktopDimensions();
-    love.graphics.setBackgroundColor(0.2156862745098,0.27843137254902,0.30980392156863);
+    love.graphics.setBackgroundColor(0.21,0.27,0.30);
 
     Include:Import(function(nCode)
         if nCode ~= 0 then 
