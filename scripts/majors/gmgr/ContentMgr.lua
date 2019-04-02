@@ -25,14 +25,14 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
                 for _,sActor in ipairs(cfg.tbMap.tbActor) do 
                     iMapGeneratorSystemSys["Create"..sActor](iMapGeneratorSystemSys,iMapCompo);
                 end
+                local iPlayer = iScene:GetActorByTagType("Player");
+                local nPw = iPlayer:GetiCompo("Transform").w;
+                local nPh = iPlayer:GetiCompo("Transform").h;
+                local tbBorn = iMapCompo.tbRealMapInfo[1]; 
+                iPlayer:ChangeiCompoParam({
+                    ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
+                });
             end);
-            local iPlayer = iScene:GetActorByTagType("Player");
-            local nPw = iPlayer:GetiCompo("Transform").w;
-            local nPh = iPlayer:GetiCompo("Transform").h;
-            local tbBorn = iMapCompo.tbRealMapInfo[1]; 
-            iPlayer:ChangeiCompoParam({
-                ["Transform"] = { x = tbBorn.x, y = tbBorn.y - nPh/2 };
-            });
         end
     end
     if fCallback then fCallback(); end 

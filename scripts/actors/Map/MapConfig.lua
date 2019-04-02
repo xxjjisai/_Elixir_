@@ -2,7 +2,7 @@ local MapConfig =
 {
     ['Transform'] = { x=100, y=100, w=64, h=64 };
     ['Color'] = { r = 1, g = 1, b = 1, a = 0.2 };
-    ['RenderLayer'] = { nLayerIndex = RenderLayerType.nPlayer };
+    ['RenderLayer'] = { nLayerIndex = RenderLayerType.nFloor };
     -- ['Rectangle'] = { sFillType = 'fill'}; 
     ["Map"] = { nCellSize = 64 };
     ["AStar"] = {};

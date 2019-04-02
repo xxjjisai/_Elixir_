@@ -3,13 +3,15 @@ _G.Scene_1 =
     tbActor = 
     {
         { sActorType = 'Player', sUseName = 'Player1' },
-        { sActorType = "Map", sUseName = 'Map1' },
+        { sActorType = 'Map', sUseName = 'Map1' },
+        { sActorType = 'Enemy', sUseName = 'Enemy1' },
+        -- { sActorType = 'Enemy', sUseName = 'Enemy2' },
     };
 
     tbMap = 
     {
         nWalkCount = 200;
-        tbActor = {"Tile", "Edge"};
+        tbActor = {'Tile', 'Edge'};
     };
 
     tbUI = 
@@ -27,6 +29,11 @@ _G.Scene_1 =
         'AnimationSystem',
         'MapGeneratorSystem',
         'LayerSortSystem',
+        'GridWalkSystem',
+        'FindPathSystem',
+        'PlayerTweenMoveSystem',
+        'EnemyGridWalkSystem',
+        'EnemyTweenMoveSystem',
         'Scene1',
     };
 }

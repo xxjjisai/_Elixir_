@@ -75,10 +75,16 @@ function Include:GlobalSystem()
     self:RequireHandler(strCommonDir,"AnimationSystem");
     self:RequireHandler(strCommonDir,"GameChainSystem");
     self:RequireHandler(strCommonDir,"UILayerSortSystem");
-
+    self:RequireHandler(strCommonDir,"FSMSystem");
+    self:RequireHandler(strCommonDir,"MapGeneratorSystem");
+    self:RequireHandler(strCommonDir,"GridWalkSystem");
+    self:RequireHandler(strCommonDir,"FindPathSystem");
+    self:RequireHandler(strCommonDir,"PlayerTweenMoveSystem");
+    
     local strMysystemDir = "scripts/systems/mysystem/";
-    self:RequireHandler(strMysystemDir,"StateMachineSystem");
-    self:RequireHandler(strMysystemDir,"MapGeneratorSystem");
+    self:RequireHandler(strMysystemDir,"EnemyGridWalkSystem");
+    self:RequireHandler(strMysystemDir,"EnemyTweenMoveSystem");
+
 
 end
 

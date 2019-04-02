@@ -1,6 +1,6 @@
 local PlayerConfig = 
 {
-    ["Transform"] = { x=0, y=0, w=64, h=128, sx=1, sy=1, ox=0, oy=0, r=0 };
+    ["Transform"] = { x=0, y=0, w=53, h=60, sx=1, sy=1, ox=0, oy=0, r=0 };
     ["Color"] = { r = 1, g = 1, b = 1, a = 1 };
     ["RenderLayer"] = { nLayerIndex = RenderLayerType.nPlayer };
     -- ["Speed"] = { nSpeed = 200}; 
@@ -9,8 +9,8 @@ local PlayerConfig =
     -- ["Sprite"] = { sImg = "hero_001" };
     -- ["Animate"] = { sImg = "ball", nQuadW = 32, nQuadH = 32, nTotalFrame= 5, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.07 };
     -- ["Animate"] = { sImg = "tc", nQuadW = 30, nQuadH = 55, nTotalFrame= 18, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.07 };
-    ["Animate"] = { sImg = "hero_ani", nQuadW = 64, nQuadH = 128, nTotalFrame= 4, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
-    -- ["Animate"] = { sImg = "blueanims", nQuadW = 53, nQuadH = 60, nTotalFrame= 29, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
+    -- ["Animate"] = { sImg = "hero_ani", nQuadW = 64, nQuadH = 128, nTotalFrame= 4, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
+    ["Animate"] = { sImg = "blueanims", nQuadW = 53, nQuadH = 60, nTotalFrame= 29, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
     -- ["Animate"] = { sImg = "blockercans", nQuadW = 53, nQuadH = 60, nTotalFrame= 12, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
 }
 return PlayerConfig

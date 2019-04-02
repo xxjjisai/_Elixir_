@@ -38,9 +38,9 @@
 -- local w = iPlayer:GetiCompo("Size").w;
 -- local h = iPlayer:GetiCompo("Size").h;
 -- iPlayer:ChangeiCompoParam({
---     ["Position"] = { x = (graphicsWidth/2) - (w/2), y = graphicsHeight + 90 };
+--     ["Transform"] = { x = (graphicsWidth/2) - (w/2), y = graphicsHeight + 90 };
 -- })
--- Tween(2,iPlayer:GetiCompo("Position"),{ x = (graphicsWidth/2) - (w/2),y = graphicsHeight - h - 90},'inOutBack',function ()
+-- Tween(2,iPlayer:GetiCompo("Transform"),{ x = (graphicsWidth/2) - (w/2),y = graphicsHeight - h - 90},'inOutBack',function ()
 --     if pfn then pfn() end
 -- end)
 
@@ -49,7 +49,7 @@
 -- local iActor = ActorMgr:CreateActor("Actor")
 -- iScene:AddActor(iActor);
 -- iActor:ChangeiCompoParam({
---     ["Position"] = { x = (graphicsWidth/2) - (w/2), y = 0 - 120 };
+--     ["Transform"] = { x = (graphicsWidth/2) - (w/2), y = 0 - 120 };
 -- })
 
 -- 操作摄像头
