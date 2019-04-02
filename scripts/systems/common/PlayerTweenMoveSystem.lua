@@ -39,7 +39,7 @@ function PlayerTweenMoveSystem:MoveHandler(iTargetNode)
     local nNCol,nNRow = math.floor(nx/nCellSize),math.floor(ny/nCellSize);
     local ox,oy = nNCol * nCellSize,nNRow * nCellSize ;
     local tbPos = { x = ox, y = oy }
-    Tween(0.4,iPlayer:GetiCompo("Transform"),{ x = ox,y = oy },'outQuad',function ()
+    Tween.start(0.4,iPlayer:GetiCompo("Transform"),{ x = ox,y = oy },'outQuad',function ()
         self:MoveHandler(self:GetNextNode());
     end)
 end 

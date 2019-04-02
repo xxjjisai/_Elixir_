@@ -78,6 +78,16 @@ function Scene:GetActorByTagType(sTagType)
     end 
 end
 
+function Scene:GetActorListByTagType(sTagType)
+    local tbList = {};
+    for _,iActor in ipairs (self.tbActorList) do 
+        if iActor.sTagType == sTagType then 
+            table.insert(tbList,iActor)
+        end
+    end 
+    return tbList
+end
+
 function Scene:GetActorByClassName(sClassName)
     for _,iActor in ipairs (self.tbActorList) do 
         if iActor.sClassName == sClassName then 

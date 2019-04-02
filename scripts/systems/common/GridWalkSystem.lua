@@ -70,8 +70,9 @@ function GridWalkSystem:MouseDown(x,y,button)
                 return;
             end 
             PlayerTweenMoveSystem:SearchPathComplete(tbPath,function ()
-                Event:DoEvent(self,"EvtPlayerMoveComplete")
-                self.bMoved = false;
+                Event:DoEvent(self,"EvtPlayerMoveComplete",function ()
+                    self.bMoved = false;
+                end)
             end);
         end)
     end

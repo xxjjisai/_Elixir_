@@ -5,12 +5,16 @@ _G.Scene_1 =
         { sActorType = 'Player', sUseName = 'Player1' },
         { sActorType = 'Map', sUseName = 'Map1' },
         { sActorType = 'Enemy', sUseName = 'Enemy1' },
-        -- { sActorType = 'Enemy', sUseName = 'Enemy2' },
+        { sActorType = 'Enemy', sUseName = 'Enemy2' },
+        -- { sActorType = 'Enemy', sUseName = 'Enemy3' },
+        -- { sActorType = 'Enemy', sUseName = 'Enemy4' },
+        -- { sActorType = 'Enemy', sUseName = 'Enemy5' },
+        -- { sActorType = 'Enemy', sUseName = 'Enemy6' },
     };
 
     tbMap = 
     {
-        nWalkCount = 200;
+        nWalkCount = 30;
         tbActor = {'Tile', 'Edge'};
     };
 
