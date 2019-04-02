@@ -22,21 +22,21 @@ function Scene1:StartHandler()
         ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
     });
 
-    -- local iEnemy3 = ActorMgr:GetActor("Enemy3")
-    -- local nPw = iEnemy3:GetiCompo("Transform").w;
-    -- local nPh = iEnemy3:GetiCompo("Transform").h;
-    -- local tbBorn = iMapCompo.tbRealMapInfo[math.random(1, #iMapCompo.tbRealMapInfo)]; 
-    -- iEnemy3:ChangeiCompoParam({
-    --     ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
-    -- });
+    local iEnemy3 = ActorMgr:GetActor("Enemy3")
+    local nPw = iEnemy3:GetiCompo("Transform").w;
+    local nPh = iEnemy3:GetiCompo("Transform").h;
+    local tbBorn = iMapCompo.tbRealMapInfo[math.random(1, #iMapCompo.tbRealMapInfo)]; 
+    iEnemy3:ChangeiCompoParam({
+        ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
+    });
 
-    -- local iEnemy4 = ActorMgr:GetActor("Enemy4")
-    -- local nPw = iEnemy4:GetiCompo("Transform").w;
-    -- local nPh = iEnemy4:GetiCompo("Transform").h;
-    -- local tbBorn = iMapCompo.tbRealMapInfo[math.random(1, #iMapCompo.tbRealMapInfo)]; 
-    -- iEnemy4:ChangeiCompoParam({
-    --     ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
-    -- });
+    local iEnemy4 = ActorMgr:GetActor("Enemy4")
+    local nPw = iEnemy4:GetiCompo("Transform").w;
+    local nPh = iEnemy4:GetiCompo("Transform").h;
+    local tbBorn = iMapCompo.tbRealMapInfo[math.random(1, #iMapCompo.tbRealMapInfo)]; 
+    iEnemy4:ChangeiCompoParam({
+        ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
+    });
 end
 
 function Scene1:Update(dt)
