@@ -84,6 +84,7 @@ function Include:GlobalSystem()
     local strMysystemDir = "scripts/systems/mysystem/";
     self:RequireHandler(strMysystemDir,"EnemyGridWalkSystem");
     self:RequireHandler(strMysystemDir,"EnemyTweenMoveSystem");
+    self:RequireHandler(strMysystemDir,"ColorSystem");
 
 
 end

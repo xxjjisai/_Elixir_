@@ -26,12 +26,9 @@ function ContentMgr:ProduceHandler(iScene,fCallback)
                     iMapGeneratorSystemSys["Create"..sActor](iMapGeneratorSystemSys,iMapCompo);
                 end
                 local iPlayer = iScene:GetActorByTagType("Player");
-                local nPw = iPlayer:GetiCompo("Transform").w;
-                local nPh = iPlayer:GetiCompo("Transform").h;
                 local tbBorn = iMapCompo.tbRealMapInfo[1]; 
-                iPlayer:ChangeiCompoParam({
-                    ["Transform"] = { x = tbBorn.x, y = tbBorn.y};
-                });
+                tbBorn.nWalkAble = 0;
+                ActorMgr:ResetActorPosition(iPlayer,tbBorn.x,tbBorn.y);
             end);
         end
     end

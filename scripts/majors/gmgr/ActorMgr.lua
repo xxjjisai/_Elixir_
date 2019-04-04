@@ -20,3 +20,8 @@ end
 function ActorMgr:RemoveActor(iActor)
     SceneMgr:GetCurScene():RemoveActor(iActor);
 end
+
+function ActorMgr:ResetActorPosition(iActor,x,y)
+    iActor:SetiCompo("Transform", "x", x);
+    iActor:SetiCompo("Transform", "y", y);
+end

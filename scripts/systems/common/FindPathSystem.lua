@@ -82,7 +82,7 @@ function FindPathSystem:SearchPath(tbStartNode,tbEndNode,pfn)
                 if not CheckIncludeInList(tbCloseList,iCurNode) then 
                     local nTmpG = tbCurrentNode.g + 1; 
                     local bNewPath = false;
-                    if CheckIncludeInList(tbOpenList,iCurNode) then 
+                    if CheckIncludeInList(tbOpenList,iCurNode) or iCurNode.nWalkAble == 0 then 
                         if nTmpG < iCurNode.g then 
                             iCurNode.g = nTmpG;
                             bNewPath = true;

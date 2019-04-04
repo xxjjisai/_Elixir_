@@ -64,6 +64,15 @@ function MapGeneratorSystem:QuerytbNodeByColAndRow(iMapCompo,nCol,nRow)
     end
 end
 
+function MapGeneratorSystem:GetRandomNode(iMapCompo,nType)
+    for i = 1, #iMapCompo.tbRealMapInfo do
+        local tbNode = iMapCompo.tbRealMapInfo[i];
+        if tbNode.nWalkAble == nType then 
+            return tbNode
+        end
+    end
+end
+
 function MapGeneratorSystem:CreateTile(iMapCompo)
     local iScene = self:GetCurScene();
     for i = 1, #iMapCompo.tbRealMapInfo do
@@ -72,36 +81,10 @@ function MapGeneratorSystem:CreateTile(iMapCompo)
         iScene:AddActor(iTile);
         iTile:ChangeiCompoParam({
             ["Transform"] = { x = tbNode.x, y = tbNode.y };
-            ["Color"] = { r = 0.14, g = 0.55, b = 0.29, a = 1 };
         });
-        
-        -- if i==1 then 
-        --     iTile:ChangeiCompoParam({
-        --         ["Transform"] = { x = tbNode.x, y = tbNode.y };
-        --         ["Color"] = { r = 1, g = 0, b = 0, a = 1 };
-        --     });
-        -- elseif i==#iMapCompo.tbRealMapInfo then 
-        --     iTile:ChangeiCompoParam({
-        --         ["Transform"] = { x = tbNode.x, y = tbNode.y };
-        --         ["Color"] = { r = 0, g = 0, b = 1, a = 1 };
-        --     });
-        -- end
-
         tbNode.nWalkAble = 1;
         tbNode.nID = Origin:SetUniqueID();
         tbNode.addNeighbors(tbNode,iMapCompo.tbRealMapInfo);
-    end
-end
-
-function MapGeneratorSystem:CreateTileGrid(iMapCompo)
-    local iScene = self:GetCurScene();
-    for i = 1, #iMapCompo.tbRealMapInfo do
-        local tbNode = iMapCompo.tbRealMapInfo[i];
-        local iTileGrid = ActorMgr:CreateActor("TileGrid");
-        iScene:AddActor(iTileGrid);
-        iTileGrid:ChangeiCompoParam({
-            ["Transform"] = { x = tbNode.x, y = tbNode.y };
-        });
     end
 end
 
@@ -121,4 +104,6 @@ function MapGeneratorSystem:CreateEdge(iMapCompo)
             });
         end 
     end
-end
+end 
+
+

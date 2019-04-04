@@ -8,21 +8,24 @@ _G.Scene_1 =
         { sActorType = 'Enemy', sUseName = 'Enemy2' },
         { sActorType = 'Enemy', sUseName = 'Enemy3' },
         { sActorType = 'Enemy', sUseName = 'Enemy4' },
+        { sActorType = 'Enemy', sUseName = 'Enemy5' },
+        { sActorType = 'Enemy', sUseName = 'Enemy6' },
+        { sActorType = 'Enemy', sUseName = 'Enemy7' },
     };
 
     tbMap = 
     {
-        nWalkCount = 230;
+        nWalkCount = 200;
         tbActor = {'Tile', 'Edge'};
     };
 
-    tbUI = 
-    { 
-        -- { sUIType = 'ShapeButton', sUseName = 'btn_1' },
-        -- { sUIType = 'ShapeTextInput', sUseName = 'input_1' },
-        -- { sUIType = 'ShapeList', sUseName = 'list_1' },
-        -- { sUIType = 'ShapeGrid', sUseName = 'grid_1' },
-    },
+  -- tbUI = 
+  -- { 
+  --     { sUIType = 'ShapeButton', sUseName = 'btn_1' },
+  --     { sUIType = 'ShapeTextInput', sUseName = 'input_1' },
+  --     { sUIType = 'ShapeList', sUseName = 'list_1' },
+  --     { sUIType = 'ShapeGrid', sUseName = 'grid_1' },
+  -- },
 
     tbSystem = 
     {
@@ -36,6 +39,7 @@ _G.Scene_1 =
         'PlayerTweenMoveSystem',
         'EnemyGridWalkSystem',
         'EnemyTweenMoveSystem',
+        'ColorSystem',
         'Scene1',
     };
 }
