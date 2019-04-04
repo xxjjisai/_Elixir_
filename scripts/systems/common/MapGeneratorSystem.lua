@@ -79,16 +79,15 @@ function MapGeneratorSystem:CreateTile(iMapCompo)
         local tbNode = iMapCompo.tbRealMapInfo[i];
         local iTile = ActorMgr:CreateActor("Tile");
         iScene:AddActor(iTile);
-        iTile:ChangeiCompoParam({
-            ["Transform"] = { x = tbNode.x, y = tbNode.y };
-        });
+        iTile:SetiCompo("Transform", "x", tbNode.x);
+        iTile:SetiCompo("Transform", "y", tbNode.y);
         tbNode.nWalkAble = 1;
         tbNode.nID = Origin:SetUniqueID();
         tbNode.addNeighbors(tbNode,iMapCompo.tbRealMapInfo);
     end
 end
 
-function MapGeneratorSystem:CreateEdge(iMapCompo)
+function MapGeneratorSystem:CreateTileBottomEdge(iMapCompo)
     local iScene = self:GetCurScene();
     for i = 1, #iMapCompo.tbRealMapInfo do
         local tbNode = iMapCompo.tbRealMapInfo[i];
@@ -97,11 +96,27 @@ function MapGeneratorSystem:CreateEdge(iMapCompo)
         local nTCol,nTRow = math.floor(nDownTileX/iMapCompo.nCellSize),math.floor(nDownTileY/iMapCompo.nCellSize);
         local iDownNode = self:QuerytbNodeByColAndRow(iMapCompo,nTCol,nTRow)
         if not iDownNode then 
-            local iEdge = ActorMgr:CreateActor("Edge");
-            iScene:AddActor(iEdge);
-            iEdge:ChangeiCompoParam({
-                ["Transform"] = { x = nDownTileX, y = nDownTileY };
-            });
+            local iTileBottomEdge = ActorMgr:CreateActor("TileBottomEdge");
+            iScene:AddActor(iTileBottomEdge);
+            iTileBottomEdge:SetiCompo("Transform", "x", nDownTileX);
+            iTileBottomEdge:SetiCompo("Transform", "y", nDownTileY);
+        end 
+    end
+end 
+
+function MapGeneratorSystem:CreateTileTopEdge(iMapCompo)
+    local iScene = self:GetCurScene();
+    for i = 1, #iMapCompo.tbRealMapInfo do
+        local tbNode = iMapCompo.tbRealMapInfo[i];
+        local nTopTileX = tbNode.x;
+        local nTopTileY = tbNode.y - iMapCompo.nCellSize / 2;
+        local nTCol,nTRow = math.floor(nTopTileX/iMapCompo.nCellSize),math.floor(nTopTileY/iMapCompo.nCellSize);
+        local iTopNode = self:QuerytbNodeByColAndRow(iMapCompo,nTCol,nTRow)
+        if not iTopNode then 
+            local iTileTopEdge = ActorMgr:CreateActor("TileTopEdge");
+            iScene:AddActor(iTileTopEdge);
+            iTileTopEdge:SetiCompo("Transform", "x", nTopTileX);
+            iTileTopEdge:SetiCompo("Transform", "y", nTopTileY);
         end 
     end
 end 

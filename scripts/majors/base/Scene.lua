@@ -8,6 +8,7 @@ function Scene:DeriveClass(sClassName)
     obj.tbRenderList = {};                  -- 渲染列表
     obj.tbSystemList = {};                  -- 系统列表
     obj.tbUIList = {};                      -- UI列表
+    obj.tbActionActor = {};                 -- 动作Actor列表
     obj.nUniqueID = 0;                      -- 唯一识别
     obj.sTagType = "Scene";                 -- 标签类型
     obj.nSceneID = 0;                       -- 场景ID
@@ -163,4 +164,12 @@ end
 
 function Scene:ClearUI()
     self.tbUIList = {};
+end
+
+function Scene:SetActionActor(tbActionActor)
+    self.tbActionActor = tbActionActor;
+end
+
+function Scene:GetActionActor()
+    return self.tbActionActor
 end

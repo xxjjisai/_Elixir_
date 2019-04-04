@@ -5,7 +5,7 @@ EnemyGridWalkSystem:SetRegisterCompo{
 };
 
 function EnemyGridWalkSystem:Start()
-    Event:AddEvent(GridWalkSystem,self);
+    -- Event:AddEvent(GridWalkSystem,self);
 end
 
 function EnemyGridWalkSystem:EvtPlayerMoveComplete(pfn)

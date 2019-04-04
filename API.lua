@@ -198,3 +198,18 @@
 --     self:GetCurScene():GetSystemByName("MapGeneratorSystem"):CreateTile(self:GetCurScene():GetActorByTagType("Map"):GetiCompo("Map"));
 --     self:GetCurScene():GetSystemByName("MapGeneratorSystem"):CreateEdge(self:GetCurScene():GetActorByTagType("Map"):GetiCompo("Map"));
 -- end);
+
+-- 协同程序例子
+
+-- local function AAA(sName)
+--     self:Trace(1,sName) -- xxxx
+--     coroutine.yield("aaa")
+-- end
+
+-- for i,iActor in ipairs(tbActorHate) do 
+--     if self:FindActionActor(tbActionActor,iActor.sTagType) then 
+--         local co = coroutine.create(AAA)
+--         local str = coroutine.resume(co,"xxxx")
+--            print(str) -- "aaa"
+--     end
+-- end

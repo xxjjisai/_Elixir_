@@ -1,6 +1,9 @@
 _G.Scene1 = GameChainSystem:DeriveClass('Scene1');
 
 function Scene1:StartHandler()
+
+    ColorTransformForLove11( 226, 219,190)
+
     local iScene = self:GetCurScene();
     local iMap = iScene:GetActorByTagType("Map");
     local iMapCompo = iMap:GetiCompo("Map");

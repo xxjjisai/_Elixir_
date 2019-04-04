@@ -3,6 +3,7 @@ _G.ContentMgr = Class:DeriveClass("ContentMgr");
 
 function ContentMgr:ProduceHandler(iScene,fCallback)
     local cfg = _G["Scene_"..iScene.nSceneID];
+    iScene:SetActionActor(cfg.tbActionActor);
     for _,tbActor in ipairs(cfg.tbActor) do 
         local iActor = ActorMgr:CreateActor(tbActor.sActorType,tbActor.sUseName,tbActor.tbProperty);
         iScene:AddActor(iActor);

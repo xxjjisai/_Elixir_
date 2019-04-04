@@ -5,8 +5,9 @@ local PlayerConfig =
     ["RenderLayer"] = { nLayerIndex = RenderLayerType.nPlayer };
     ["HateList"] = { }; 
     ["SightRange"] = { nSightRange = 100}; 
-    ["Rectangle"] = { sFillType = "fill"}; 
+    -- ["Rectangle"] = { sFillType = "fill"}; 
     -- ["Sprite"] = { sImg = "hero_001" };
     -- ["Animate"] = { sImg = "blockercans", nQuadW = 53, nQuadH = 60, nTotalFrame= 12, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
+    ["Animate"] = { sImg = "hero_ani_2", nQuadW = 100, nQuadH = 100, nTotalFrame= 4, nLoop = 1, nTotalPlayCount = 10,nTimeAfterPlay = 0.1 };
 }
 return PlayerConfig
